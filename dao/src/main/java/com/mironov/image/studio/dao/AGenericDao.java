@@ -5,6 +5,11 @@ import com.mironov.image.studio.entities.AEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 public abstract class AGenericDao<T extends AEntity<Long>> implements IAGenericDao<T> {
 
@@ -26,6 +31,15 @@ public abstract class AGenericDao<T extends AEntity<Long>> implements IAGenericD
 
     public T get(Long id){
         return entityManager.find(getGenericClass(), id);
+    }
+
+    public List<T> getAll() {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(getGenericClass());
+        Root<T> root = criteriaQuery.from(getGenericClass());
+        criteriaQuery.select(root);
+        TypedQuery<T> result = entityManager.createQuery(criteriaQuery);
+        return result.getResultList();
     }
 
     public void update(T entity){

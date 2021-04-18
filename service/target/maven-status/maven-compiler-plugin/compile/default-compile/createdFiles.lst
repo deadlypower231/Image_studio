@@ -1,0 +1,3 @@
+com\mironov\image\studio\configuration\ServiceConfiguration.class
+com\mironov\image\studio\security\SecurityService.class
+com\mironov\image\studio\services\UserService.class

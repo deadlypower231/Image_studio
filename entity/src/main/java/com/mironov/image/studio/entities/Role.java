@@ -22,4 +22,8 @@ public class Role extends AEntity<Long> implements Serializable {
     @Column(name = "role", length = 20)
     private String roleName;
 
+    @Override
+    public String toString() {
+        return roleName;
+    }
 }

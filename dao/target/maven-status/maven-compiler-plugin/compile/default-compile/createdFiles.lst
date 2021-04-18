@@ -1,0 +1,8 @@
+com\mironov\image\studio\dao\MasterServiceDao.class
+com\mironov\image\studio\dao\RoleDao.class
+com\mironov\image\studio\dao\OrderDao.class
+com\mironov\image\studio\dao\TournamentDao.class
+com\mironov\image\studio\dao\AGenericDao.class
+com\mironov\image\studio\dao\UserDao.class
+com\mironov\image\studio\dao\DescriptionDao.class
+com\mironov\image\studio\dao\ScheduleDao.class
