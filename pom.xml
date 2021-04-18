@@ -6,11 +6,30 @@
 
     <groupId>com.mironov.image.studio</groupId>
     <artifactId>FinalImageStudio</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+    </parent>
+
+    <modules>
+        <module>entity</module>
+        <module>api</module>
+        <module>dao</module>
+        <module>service</module>
+        <module>rest</module>
+        <module>main</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <lombok.version>1.18.18</lombok.version>
+        <mysql.version>8.0.15</mysql.version>
+        <entitymanager.version>5.2.10.Final</entitymanager.version>
     </properties>
 
 </project>
