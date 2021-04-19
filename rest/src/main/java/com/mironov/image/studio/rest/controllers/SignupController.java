@@ -26,13 +26,13 @@ public class SignupController {
     }
 
     @GetMapping
-    public String signupUser(@ModelAttribute("user") UserDto userDto) {
+    public String newUser(@ModelAttribute("user") UserDto userDto) {
         return "signup/signup";
     }
 
     @PostMapping
-    public String submitCreatingUser(@ModelAttribute("user") @Valid UserDto user,
-                                     BindingResult bindingResult, Model model) {
+    public String createUser(@ModelAttribute("user") @Valid UserDto user,
+                             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "signup/signup";
         }

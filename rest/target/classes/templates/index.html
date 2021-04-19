@@ -2,8 +2,10 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Image Studio</title>
-    <link href="../styles/styles.css" rel="stylesheet"/>
-    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../styles/styles.css" rel="stylesheet" />
+    <link href="../styles/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 
 <body class="bg-light">
@@ -60,44 +62,5 @@
         </form>
     </div>
 </nav>
-<!--<div class="card text-center">-->
-<!--    <div class="card-header">-->
-<!--        <ul class="nav nav-tabs card-header-tabs">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link active" href="/tournaments">Турниры</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link disabled" href="/users/masters">Мастера</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link disabled" href="#">Disabled</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link disabled" href="/users/settings">Настройки</a>-->
-<!--            </li>-->
-
-<!--        </ul>-->
-<!--    </div>-->
-<!--    <div th:each="tournament : ${tournamentList}">-->
-<!--        <div class="card-body">-->
-
-<!--            <h5 class="card-title"><p th:text="'Название: ' + ${tournament.name}"/></h5>-->
-<!--            <p class="card-text">-->
-<!--            <p th:text="'Описание: ' + ${tournament.shortDescription}"/></p>-->
-<!--            <a href="#" class="btn btn-primary"><p th:text="'Дата проведения: ' + ${tournament.date}"/></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 </body>
 </html>

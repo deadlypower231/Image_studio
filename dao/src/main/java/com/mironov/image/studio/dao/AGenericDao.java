@@ -17,7 +17,7 @@ public abstract class AGenericDao<T extends AEntity<Long>> implements IAGenericD
     @PersistenceContext
     protected EntityManager entityManager;
 
-    public AGenericDao(Class<T> clazz) {
+    protected AGenericDao(Class<T> clazz) {
         this.clazz = clazz;
     }
     public Class<T> getGenericClass() {
