@@ -25,7 +25,7 @@ public class Tournament extends AEntity<Long> implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "description_id", referencedColumnName = "id")
     private Description description;
     @ManyToMany(fetch = FetchType.LAZY)

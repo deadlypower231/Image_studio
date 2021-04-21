@@ -37,14 +37,13 @@ public class SignupController {
             return "signup/signup";
         }
         try {
-            UserDto userDto = this.userService.createUser(user);
-            this.userService.addUserRole(userDto);
+            this.userService.createUser(user);
             securityService.autoLogin(user.getUsername(), user.getPassword());
         } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "error/createEntityError";
         }
-        return "main";
+        return "redirect:/";
     }
 
 }

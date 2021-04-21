@@ -1,4 +1,5 @@
 com\mironov\image\studio\rest\controllers\MainController.class
+com\mironov\image\studio\rest\controllers\AdminControllers.class
 com\mironov\image\studio\configuration\SecurityConfiguration.class
 com\mironov\image\studio\rest\controllers\SignupController.class
 com\mironov\image\studio\rest\controllers\UserController.class

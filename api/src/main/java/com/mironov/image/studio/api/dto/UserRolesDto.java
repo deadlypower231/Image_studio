@@ -10,6 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class UserRolesDto {
-    private Long idUser;
     private List<String> roles;
 }

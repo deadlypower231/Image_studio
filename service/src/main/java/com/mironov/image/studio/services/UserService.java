@@ -58,18 +58,13 @@ public class UserService implements IUserService {
         this.userDao.update(user);
     }
 
-    //todo 2 метода в 1
     @Transactional
-    public UserDto createUser(UserDto userDto) {
-        User savedUser = this.userDao.create(UserMapper.createMapUser(userDto));
+    public void createUser(UserDto userDto) {
+        UserDto savedUser = UserMapper.mapUserDto(this.userDao.create(UserMapper.createMapUser(userDto)));
+        List<Role> roles = this.roleDao.getAll();
+        savedUser.getRoles().add(roles.get(0));
         savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        return UserMapper.mapUserDto(savedUser);
+        this.userDao.update(UserMapper.mapUser(savedUser));
     }
 
-    @Transactional
-    public void addUserRole(UserDto userDto) {
-        List<Role> roles = this.roleDao.getAll();
-        userDto.setRoles(Collections.singletonList(roles.get(0)));
-        this.userDao.update(UserMapper.mapUser(userDto));
-    }
 }
