@@ -7,19 +7,19 @@
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
-<body class="bg-body p-sm-3">
-<nav class="navbar navbar-light bg-light">
+<body class="bg-color">
+<nav class="navbar navbar-light head-color" style="height : 4.5rem;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="../images/logo.png" alt="" width="30" height="24" class="d-inline-block align-top">
+            <img src="../images/logo.jpg" alt="" width="30" height="24" class="d-inline-block align-top">
             Mironov
         </a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="/login"/>
-            <button class="btn btn-primary me-md-2" type="button" disabled>Login</button>
+            <button class="btn btn-info me-md-2" type="button">Войти</button>
             </a>
             <a href="/signup"/>
-            <button class="btn btn-primary" type="button">Signup</button>
+            <button class="btn btn-info" type="button">Регистрация</button>
             </a>
         </div>
     </div>
@@ -41,6 +41,10 @@
                 <input type="password" name="password" id="password"
                        class="form-control input-lg" placeholder="Password"
                        required/>
+            </div>
+            <div class="form-group">
+                <label for="remember">Запомнить меня</label>
+                <input id="remember" type="checkbox" name="remember-me" />
             </div>
 
             <div>

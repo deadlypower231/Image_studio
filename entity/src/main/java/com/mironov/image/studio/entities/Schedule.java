@@ -1,5 +1,7 @@
 package com.mironov.image.studio.entities;
 
+import com.mironov.image.studio.enums.State;
+import javafx.concurrent.Worker;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +29,6 @@ public class Schedule extends AEntity<Long> implements Serializable {
     private Tournament tournament;
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
     private List<Order> order;
+    @Column(name = "state")
+    private State state;
 }

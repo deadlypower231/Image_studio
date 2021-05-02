@@ -1,26 +1,27 @@
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://thymeleaf.org">
 <head>
     <title>Tournaments create</title>
     <link href="../../styles/styles.css" rel="stylesheet"/>
     <link href="../../styles/bootstrap.min.css" rel="stylesheet"/>
-    <script type="text/javascript" src="../../js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../../js/popper.min.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="../../js/popper.min.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 
-<body>
-<div class="d-flex justify-content-end p-sm-3 bg-dark" style="height : 4.5rem;">
+<body class="bg-color">
+<div class="d-flex justify-content-end p-sm-3 head-color" style="height : 4.5rem;">
     <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
-        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false"
+        <a aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+           id="dropdownMenuLink" role="button"
            th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <div aria-labelledby="dropdownMenuLink" class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="/">Страница пользователя</a>
             <div sec:authorize="hasRole('MASTER')">
                 <a class="dropdown-item" href="/masters">Страница мастера</a>
             </div>
+            <a class="dropdown-item" href="/orders">Мои заказы</a>
             <a class="dropdown-item" href="/settings">Настройки</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item " href="/logout">Выйти</a>
@@ -34,45 +35,56 @@
     <li class="nav-item">
         <div class="btn-group">
             <a class="nav-link active" href="/admin/tournaments">Турниры</a>
-            <button type="button" class="nav-link btn btn-link dropdown-toggle dropdown-toggle-split"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button aria-expanded="false" aria-haspopup="true"
+                    class="nav-link btn btn-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" type="button">
                 <span class="sr-only"></span>
             </button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/admin/tournaments/create">Создать турнир</a>
+                <a class="dropdown-item" href="/admin/tournaments/delete">Удалить турнир</a>
             </div>
         </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/admin/masters">Мастера</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/services">Услуги</a>
+    </li>
 </ul>
 
-<form action="/admin/tournaments/create" style="width: 25rem;" class="form-inline" th:object="${tournament}"
-      method="post"
-      enctype="multipart/form-data">
+<form action="/admin/tournaments/create" class="form-inline" enctype="multipart/form-data" method="post"
+      style="width: 25rem;"
+      th:object="${tournament}">
     <div class="row shadow-sm p-3 mb-5 bg-body rounded d-flex justify-content-around  flex-wrap">
         <div class="shadow-sm p-3 mb-5 bg-body rounded">
             <div class="form-group">
                 <label for="name">Введите название турнира:</label>
-                <input id="name" class="form-control mx-sm-3" type="text"
-                       th:field="*{name}" aria-describedby="name1" placeholder="Название турнира." required>
+                <input aria-describedby="name1" class="form-control mx-sm-3" id="name"
+                       placeholder="Название турнира." required th:field="*{name}" type="text">
+            </div>
+            <div class="form-group">
+                <label for="name">Введите адрес проведения турнира:</label>
+                <input aria-describedby="address" class="form-control mx-sm-3" id="address"
+                       placeholder="Адрес проведения турнира." required th:field="*{address}" type="text">
             </div>
             <div class="form-group">
                 <label for="shortDescription">Введите короткое описание:</label>
-                <textarea class="form-control mx-sm-3" th:field="*{description.shortDescription}" id="shortDescription" rows="3"
-                          placeholder="Описание проведения турнира."></textarea>
+                <textarea class="form-control mx-sm-3" id="shortDescription" placeholder="Описание проведения турнира."
+                          rows="3"
+                          th:field="*{description.shortDescription}"></textarea>
             </div>
             <div class="form-group">
                 <label for="fullDescription">Введите полное описание описание:</label>
-                <textarea class="form-control mx-sm-3" th:field="*{description.fullDescription}" id="fullDescription" rows="3"
-                          placeholder="Описание проведения турнира."></textarea>
+                <textarea class="form-control mx-sm-3" id="fullDescription" placeholder="Описание проведения турнира."
+                          rows="3"
+                          th:field="*{description.fullDescription}"></textarea>
             </div>
             <div class="form-group">
                 <label for="date">Введите дату:</label>
-                <input id="date" class="form-control mx-sm-3" type="date"
-                       aria-describedby="date1"
-                       th:field="*{date}" placeholder="Дата проведения турнира." required>
+                <input aria-describedby="date1" class="form-control mx-sm-3" id="date"
+                       placeholder="Дата проведения турнира."
+                       required th:field="*{date}" type="date">
             </div>
             <div class="form-group">
                 <label for="my-file-selector">Добавить фото:</label>
@@ -80,8 +92,8 @@
             </div>
         </div>
         <div class="double-button-wrapper">
-            <input type="submit" value="Добавить" class="btn btn-primary"/>
-            <input type="reset" value="Сброс" class="btn btn-danger"/>
+            <input class="btn btn-primary" type="submit" value="Добавить"/>
+            <input class="btn btn-danger" type="reset" value="Сброс"/>
         </div>
     </div>
 </form>

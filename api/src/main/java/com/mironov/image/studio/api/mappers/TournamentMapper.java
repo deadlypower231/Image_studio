@@ -1,6 +1,8 @@
 package com.mironov.image.studio.api.mappers;
 
+import com.mironov.image.studio.api.dto.DescriptionDto;
 import com.mironov.image.studio.api.dto.TournamentDto;
+import com.mironov.image.studio.entities.Description;
 import com.mironov.image.studio.entities.Tournament;
 import lombok.experimental.UtilityClass;
 
@@ -16,7 +18,8 @@ public class TournamentMapper {
                 .address(source.getAddress())
                 .date(source.getDate())
                 .name(source.getName())
-                .description(source.getDescription())
+                .description(mapDescription(source.getDescription()))
+                .users(UserMapper.mapUsers(source.getUsers()))
                 .build();
     }
 
@@ -26,7 +29,8 @@ public class TournamentMapper {
                 .address(source.getAddress())
                 .date(source.getDate())
                 .name(source.getName())
-                .description(source.getDescription())
+                .description(mapDescriptionDto(source.getDescription()))
+                .users(UserMapper.mapUsersDto(source.getUsers()))
                 .build();
     }
 
@@ -35,7 +39,7 @@ public class TournamentMapper {
                 .address(source.getAddress())
                 .date(source.getDate())
                 .name(source.getName())
-                .description(source.getDescription())
+                .description(mapDescription(source.getDescription()))
                 .build();
     }
 
@@ -45,6 +49,22 @@ public class TournamentMapper {
 
     public List<TournamentDto> mapTournamentsDto(List<Tournament> source) {
         return source.stream().map(TournamentMapper::mapTournamentDto).collect(Collectors.toList());
+    }
+
+    private Description mapDescription(DescriptionDto source){
+        return Description.builder()
+                .id(source.getId())
+                .shortDescription(source.getShortDescription())
+                .fullDescription(source.getFullDescription())
+                .build();
+    }
+
+    private DescriptionDto mapDescriptionDto(Description source){
+        return DescriptionDto.builder()
+                .id(source.getId())
+                .shortDescription(source.getShortDescription())
+                .fullDescription(source.getFullDescription())
+                .build();
     }
 
 }

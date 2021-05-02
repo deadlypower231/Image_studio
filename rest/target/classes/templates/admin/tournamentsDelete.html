@@ -1,0 +1,91 @@
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Tournaments</title>
+    <link href="../../styles/styles.css" rel="stylesheet"/>
+    <link href="../../styles/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js/popper.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-color">
+<div class="d-flex justify-content-end p-sm-3 head-color" style="height : 4.5rem;">
+    <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false"
+           th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/">Страница пользователя</a>
+            <div sec:authorize="hasRole('MASTER')">
+                <a class="dropdown-item" href="/masters">Страница мастера</a>
+            </div>
+            <a class="dropdown-item" href="/orders">Мои заказы</a>
+            <a class="dropdown-item" href="/settings">Настройки</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item " href="/logout">Выйти</a>
+        </div>
+    </div>
+</div>
+<ul class="nav nav-tabs ">
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/users">Пользователи</a>
+    </li>
+    <li class="nav-item">
+        <div class="btn-group">
+            <a class="nav-link active" href="/admin/tournaments">Турниры</a>
+            <button type="button" class="nav-link btn btn-link dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only"></span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/admin/tournaments/create">Создать турнир</a>
+                <a class="dropdown-item" href="/admin/tournaments/delete">Удалить турнир</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/masters">Мастера</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/services">Услуги</a>
+    </li>
+</ul>
+<div class="row row-cols-md-4">
+    <div class="col" th:each="tournament : ${tournaments}">
+        <div class="card">
+            <img th:src="'../../images/' + @{${tournament.name}} + '.jpg'" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${tournament.name}"></h5>
+                <p class="card-text" th:text="${tournament.description.shortDescription}"></p>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm"
+                    data-toggle="modal" th:attr="data-target='#deletingModal' + ${tournament.id}">Удалить
+            </button>
+            <div th:id="'deletingModal' + ${tournament.id}" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" th:text="'Удалить ' + ${tournament.name} + '?'"
+                                style="color:black;"></h6>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color:red;">Вы уверены что хотите удалить?</p>
+                            <form action="#" th:action="'/admin/tournaments/delete/' + @{${tournament.id}}"
+                                  th:method="delete">
+                                <input type="submit" value="Удалить" class="btn btn-danger ">
+                            </form>
+                            <button type="button" class="btn btn-secondary beta" data-dismiss="modal">Отмена
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

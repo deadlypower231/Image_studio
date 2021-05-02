@@ -1,12 +1,8 @@
-
-$colors: (
-    "gray":       $gray-600,
-    "gray-dark":  $gray-800
-);
-
-.beta {
-  color: $yellow-300;
-  background-color: $indigo-900;
+.bg-color {
+    background-color: #edf9fa;
+}
+.head-color {
+    background-color: #38a0b0;
 }
 
 

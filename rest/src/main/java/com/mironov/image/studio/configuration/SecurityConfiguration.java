@@ -40,8 +40,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**", "/js/**", "/styles/**").permitAll()
                 .antMatchers("/", "/signup", "/login").anonymous()
                 .antMatchers("/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
-                .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
+                .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).deleteCookies("JSESSIONID")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
+                .and().rememberMe().key("uniqueKey").tokenValiditySeconds(2678400);
 //                .and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 

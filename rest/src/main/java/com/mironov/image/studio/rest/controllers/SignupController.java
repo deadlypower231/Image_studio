@@ -1,5 +1,6 @@
 package com.mironov.image.studio.rest.controllers;
 
+import com.mironov.image.studio.api.dto.UserCreateDto;
 import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
@@ -26,12 +27,12 @@ public class SignupController {
     }
 
     @GetMapping
-    public String newUser(@ModelAttribute("user") UserDto userDto) {
+    public String newUser(@ModelAttribute("user") UserCreateDto userDto) {
         return "signup/signup";
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute("user") @Valid UserDto user,
+    public String createUser(@ModelAttribute("user") @Valid UserCreateDto user,
                              BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "signup/signup";

@@ -9,8 +9,8 @@
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 </head>
 
-<body>
-<div class="d-flex justify-content-end p-sm-3 bg-dark" style="height : 4.5rem;">
+<body class="bg-color">
+<div class="d-flex justify-content-end p-sm-3 head-color" style="height : 4.5rem;">
     <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
         <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false"
@@ -21,6 +21,7 @@
             <div sec:authorize="hasRole('MASTER')">
                 <a class="dropdown-item" href="/masters">Страница мастера</a>
             </div>
+            <a class="dropdown-item" href="/orders">Мои заказы</a>
             <a class="dropdown-item" href="/settings">Настройки</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item " href="/logout">Выйти</a>
@@ -40,11 +41,15 @@
             </button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/admin/tournaments/create">Создать турнир</a>
+                <a class="dropdown-item" href="/admin/tournaments/delete">Удалить турнир</a>
             </div>
         </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/admin/masters">Мастера</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/services">Услуги</a>
     </li>
 </ul>
 <div th:each="tournament : ${tournaments}">
@@ -53,6 +58,47 @@
     <h1 th:text="'Короткое описание ' + ${tournament.description.shortDescription}"></h1>
     <h1 th:text="'Полное описание ' + ${tournament.description.fullDescription}"></h1>
     <h1 th:text="'Адрес ' + ${tournament.address}"></h1>
+    <p>Заявленые мастера:</p>
+    <div th:each="master : ${tournament.users}">
+        <div class="btn-group">
+            <a th:href="'/admin/tournaments/' + ${{tournament.id}} + '/' + ${{master.id}}">
+                <button type="button" class="btn btn-success btn-sm"
+                        th:text="${master.firstName} + ' ' + ${master.lastName}">
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-danger btn-sm"
+            data-toggle="modal" th:attr="data-target='#addMasterModal' + ${tournament.id}">Добавить мастера
+    </button>
+    <div th:id="'addMasterModal' + ${tournament.id}" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" th:text="'Выберите мастера к турниру ' + ${tournament.name}"
+                        style="color:black;"></h6>
+                </div>
+                <div class="modal-body">
+                    <form action="#" th:action="'/admin/tournaments/' + ${{tournament.id}}" th:object="${idUsers}"
+                          th:method="post">
+                        <div th:each="master: ${masters}">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" th:field="*{ids}"
+                                       th:value="${master.id}">
+                                <label class="form-check-label"
+                                       th:text="${master.firstName} + ' ' + ${master.lastName}"/>
+                            </div>
+                        </div>
+                        <input type="submit" value="Добавить" class="btn btn-success">
+                    </form>
+                    <button type="button" class="btn btn-secondary beta" data-dismiss="modal">Отмена
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

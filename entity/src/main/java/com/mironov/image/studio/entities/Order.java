@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "order")
@@ -20,7 +21,7 @@ public class Order extends AEntity<Long> implements Serializable {
     @Column(name = "price")
     private double price;
     @Column(name = "submit_date")
-    private String submitDate;
+    private OffsetDateTime submitDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;

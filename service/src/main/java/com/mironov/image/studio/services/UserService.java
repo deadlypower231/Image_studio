@@ -2,8 +2,9 @@ package com.mironov.image.studio.services;
 
 import com.mironov.image.studio.api.dao.IRoleDao;
 import com.mironov.image.studio.api.dao.IUserDao;
-import com.mironov.image.studio.api.dto.UserDto;
-import com.mironov.image.studio.api.dto.UserRolesDto;
+import com.mironov.image.studio.api.dto.*;
+import com.mironov.image.studio.api.mappers.RoleMapper;
+import com.mironov.image.studio.api.mappers.UserCreateMapper;
 import com.mironov.image.studio.api.mappers.UserMapper;
 import com.mironov.image.studio.api.services.IUserService;
 import com.mironov.image.studio.entities.Role;
@@ -11,9 +12,11 @@ import com.mironov.image.studio.entities.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import javax.transaction.Transactional;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService implements IUserService {
@@ -28,8 +31,8 @@ public class UserService implements IUserService {
         this.roleDao = roleDao;
     }
 
-    public User getUser(long id) {
-        return this.userDao.get(id);
+    public UserDto getUser(long id) {
+        return UserMapper.mapUserDto(this.userDao.get(id));
     }
 
     @Override
@@ -39,7 +42,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDto> getAll() {
-        return UserMapper.mapUserDtos(this.userDao.getAll());
+        return UserMapper.mapUsersDto(this.userDao.getAll());
     }
 
     @Override
@@ -59,12 +62,41 @@ public class UserService implements IUserService {
     }
 
     @Transactional
-    public void createUser(UserDto userDto) {
-        UserDto savedUser = UserMapper.mapUserDto(this.userDao.create(UserMapper.createMapUser(userDto)));
-        List<Role> roles = this.roleDao.getAll();
+    public void createUser(UserCreateDto userDto) {
+        UserCreateDto savedUser = UserCreateMapper.mapUserDto(this.userDao.create(UserCreateMapper.mapCreateUser(userDto)));
+//        UserCreateDto savedUser = UserMapper.mapUserDto(this.userDao.create(UserCreateMapper.mapUser(userDto)));
+        List<RoleDto> roles = RoleMapper.mapRolesDto(this.roleDao.getAll());
         savedUser.getRoles().add(roles.get(0));
         savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        this.userDao.update(UserMapper.mapUser(savedUser));
+        this.userDao.update(UserCreateMapper.mapUser(savedUser));
+    }
+
+    @Override
+    public List<UserDto> getAllMasters() {
+        return UserMapper.mapUsersDto(this.userDao.getAllMasters());
+    }
+
+    @Override
+    public List<UserDto> searchUsers(String text) {
+        return UserMapper.mapUsersDto(this.userDao.searchUsers(text));
+    }
+
+    @Override
+    public Set<UserDto> searchMasters(String text) {
+        List<String> strings = Arrays.asList(text.split(" "));
+        return UserMapper.mapUsersDto(this.userDao.searchMasters(strings));
+    }
+
+    @Override
+    @Transactional
+    public void updateUser(UserUpdateDto userUpdateDto) {
+        User entity = this.userDao.getByName(userUpdateDto.getUsername());
+        entity.setUsername(userUpdateDto.getUsername());
+        entity.setFirstName(userUpdateDto.getFirstName());
+        entity.setLastName(userUpdateDto.getLastName());
+        entity.setEmail(userUpdateDto.getEmail());
+        entity.setPhone(userUpdateDto.getPhone());
+        this.userDao.update(entity);
     }
 
 }

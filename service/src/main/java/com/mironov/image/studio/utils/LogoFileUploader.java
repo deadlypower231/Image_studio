@@ -24,16 +24,16 @@ public class LogoFileUploader {
 
     public void defaultLogoTournament(Tournament tournament) throws IOException {
         String userName = tournament.getName();
-        String filePath = new StringBuilder(LOGOS_FOLDER_PATH).append(userName).append(IMAGE_EXTENSION).toString();
+        String filePath = LOGOS_FOLDER_PATH + userName + IMAGE_EXTENSION;
         URL dFileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
-        File defaultFile = new File(new StringBuilder(dFileUrl.getPath()).append(LOGOS_FILE_NAME_TOURNAMENT).toString());
+        File defaultFile = new File(dFileUrl.getPath() + LOGOS_FILE_NAME_TOURNAMENT);
         File tournamentLogo;
         try {
             tournamentLogo = ResourceUtils.getFile(filePath);
         } catch (FileNotFoundException e) {
             URL fileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
             tournamentLogo = new File(
-                    new StringBuilder(fileUrl.getPath()).append(userName).append(IMAGE_EXTENSION).toString());
+                    fileUrl.getPath() + userName + IMAGE_EXTENSION);
         }
         BufferedImage image = ImageIO.read(defaultFile);
         ImageIO.write(image, "jpg", tournamentLogo);
@@ -42,14 +42,14 @@ public class LogoFileUploader {
     public void createLogoTournament(MultipartFile file, Tournament tournament) throws IOException {
         if (file != null && !file.isEmpty()) {
             String userName = tournament.getName();
-            String filePath = new StringBuilder(LOGOS_FOLDER_PATH).append(userName).append(IMAGE_EXTENSION).toString();
+            String filePath = LOGOS_FOLDER_PATH + userName + IMAGE_EXTENSION;
             File tournamentLogo;
             try {
                 tournamentLogo = ResourceUtils.getFile(filePath);
             } catch (FileNotFoundException e) {
                 URL fileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
                 tournamentLogo = new File(
-                        new StringBuilder(fileUrl.getPath()).append(userName).append(IMAGE_EXTENSION).toString());
+                        fileUrl.getPath() + userName + IMAGE_EXTENSION);
             }
             Path path = Paths.get(tournamentLogo.getPath());
             byte[] bytes = file.getBytes();

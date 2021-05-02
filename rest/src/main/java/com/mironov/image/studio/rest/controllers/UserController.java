@@ -1,5 +1,6 @@
 package com.mironov.image.studio.rest.controllers;
 
+import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.IUserService;
 import com.mironov.image.studio.entities.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class UserController {
 
     @GetMapping
     @RequestMapping("/{id}")
-    public User getUser(@PathVariable long id) {
+    public UserDto getUser(@PathVariable long id) {
         return this.userService.getUser(id);
     }
 }

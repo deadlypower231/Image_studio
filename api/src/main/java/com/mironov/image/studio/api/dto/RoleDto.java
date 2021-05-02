@@ -12,4 +12,8 @@ public class RoleDto {
     private long id;
     private String roleName;
 
+    @Override
+    public String toString() {
+        return roleName;
+    }
 }

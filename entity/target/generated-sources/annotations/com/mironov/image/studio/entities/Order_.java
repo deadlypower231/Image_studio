@@ -1,5 +1,6 @@
 package com.mironov.image.studio.entities;
 
+import java.time.OffsetDateTime;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -10,7 +11,7 @@ public abstract class Order_ extends com.mironov.image.studio.entities.AEntity_ 
 
 	public static volatile SingularAttribute<Order, Schedule> schedule;
 	public static volatile SingularAttribute<Order, Double> price;
-	public static volatile SingularAttribute<Order, String> submitDate;
+	public static volatile SingularAttribute<Order, OffsetDateTime> submitDate;
 	public static volatile SingularAttribute<Order, Tournament> tournament;
 	public static volatile SingularAttribute<Order, MasterService> masterService;
 	public static volatile SingularAttribute<Order, User> master;

@@ -1,7 +1,10 @@
 package com.mironov.image.studio.api.dto;
 
 import com.mironov.image.studio.entities.Description;
+import com.mironov.image.studio.entities.User;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,5 +16,6 @@ public class TournamentDto {
     private String address;
     private String name;
     private String date;
-    private Description description;
+    private DescriptionDto description;
+    private List<UserDto> users;
 }

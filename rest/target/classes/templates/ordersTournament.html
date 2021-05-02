@@ -1,0 +1,77 @@
+<html   xmlns:th="http://thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Image Studio</title>
+    <link href="../styles/styles.css" rel="stylesheet"/>
+    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/popper.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-color">
+<div class="d-flex justify-content-end p-sm-3 head-color"  style="height : 4.5rem;">
+    <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false" th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <div sec:authorize="hasRole('ADMIN')">
+                <a class="dropdown-item" href="/admin/users">Страница администратора</a>
+            </div>
+            <a class="dropdown-item" href="/orders">Мои заказы</a>
+            <a class="dropdown-item" href="/settings">Настройки</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item " href="/logout">Выйти</a>
+        </div>
+    </div>
+    <div sec:authorize="isAnonymous()" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="/login"/>
+        <button class="btn btn-info" type="button">Войти</button>
+        </a>
+        <a href="/signup"/>
+        <button class="btn btn-info" type="button">Регистрация</button>
+        </a>
+    </div>
+</div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/">Главная страница</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Турниры</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/masters">Мастера</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/order">Запись на турнир</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">О нас</a>
+    </li>
+</ul>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+        <div class="card h-100">
+            <img th:src="'../images/' + @{${tournament.name}} + '.jpg'" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${tournament.name}"></h5>
+                <p class="card-text" th:text="${tournament.description.shortDescription}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-center h-100">
+            <p>Выберите мастера:</p>
+            <div th:each="master : ${tournament.users}">
+                <a th:href="'/order/' + @{${tournament.id}} + '/' + @{${master.id}}">
+                    <button class="btn btn-success btn-sm-2" type="button" th:text="${master.firstName} + ' ' + ${master.lastName}"> </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
