@@ -1,5 +1,6 @@
 package com.mironov.image.studio.entities;
 
+import com.mironov.image.studio.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,12 @@ public class User extends AEntity<Long> implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "createdDate")
+    private OffsetDateTime createdDate;
+    @Column(name = "lastActivity")
+    private OffsetDateTime lastActivity;
+    @Column(name = "status")
+    private Status status;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "description_id", referencedColumnName = "id")

@@ -16,7 +16,4 @@ public interface IMasterServicesService {
 
     void deleteServices(ServiceIdsDto serviceIdsDto);
 
-    List<MasterServiceDto> getAllFromMaster(long idMaster);
-
-
 }

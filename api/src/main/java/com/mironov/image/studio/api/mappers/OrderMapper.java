@@ -19,6 +19,7 @@ public class OrderMapper {
                 .masterService(mapMasterService(source.getMasterServiceDto()))
                 .schedule(mapSchedule(source.getScheduleDto()))
                 .master(mapUser(source.getMaster()))
+                .price(source.getPrice())
                 .build();
     }
 
@@ -30,6 +31,7 @@ public class OrderMapper {
                 .masterServiceDto(mapMasterServiceDto(source.getMasterService()))
                 .scheduleDto(mapScheduleDto(source.getSchedule()))
                 .master(mapUserDto(source.getMaster()))
+                .price(source.getPrice())
                 .build();
     }
 

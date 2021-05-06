@@ -17,5 +17,6 @@ public class OrderDto {
     private MasterServiceDto masterServiceDto;
     private ScheduleDto scheduleDto;
     private UserDto master;
+    private double price;
 
 }

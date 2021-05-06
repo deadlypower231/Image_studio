@@ -1,9 +1,6 @@
 package com.mironov.image.studio.api.services;
 
-import com.mironov.image.studio.api.dto.UserCreateDto;
-import com.mironov.image.studio.api.dto.UserDto;
-import com.mironov.image.studio.api.dto.UserRolesDto;
-import com.mironov.image.studio.api.dto.UserUpdateDto;
+import com.mironov.image.studio.api.dto.*;
 
 import java.util.List;
 import java.util.Set;
@@ -13,7 +10,11 @@ public interface IUserService {
 
     void createUser(UserCreateDto userDto);
 
-    UserDto findUserByName(String name);
+    boolean findUserByName(String name);
+
+    boolean findUserByNumberPhone(long phone);
+
+    boolean findUserByEmail(String email);
 
     List<UserDto> getAll();
 
@@ -28,4 +29,6 @@ public interface IUserService {
     Set<UserDto> searchMasters(String text);
 
     void updateUser(UserUpdateDto userUpdateDto);
+
+    boolean createNewPassword(EmailDto email);
 }

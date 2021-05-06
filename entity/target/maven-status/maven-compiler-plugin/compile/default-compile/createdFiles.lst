@@ -1,4 +1,5 @@
 com\mironov\image\studio\entities\AEntity.class
+com\mironov\image\studio\enums\Status.class
 com\mironov\image\studio\entities\Schedule$ScheduleBuilderImpl.class
 com\mironov\image\studio\entities\Schedule$1.class
 com\mironov\image\studio\entities\Schedule.class

@@ -1,5 +1,6 @@
 package com.mironov.image.studio.rest.controllers;
 
+import com.mironov.image.studio.api.dto.CurrentUserDto;
 import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
@@ -20,7 +21,7 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String home(Model model) {
-        UserDto currentUser = getCurrentUser();
+        CurrentUserDto currentUser = getCurrentUser();
         if (currentUser != null) {
             model.addAttribute("currentUser", currentUser);
         }
@@ -29,13 +30,10 @@ public class MainController {
 
     @GetMapping(value = "/login")
     public String login() {
-        return "login";
+        return "signup/login";
     }
 
-    private UserDto getCurrentUser() {
-        if (this.securityService.findLoggedInUser().equals("anonymousUser")) {
-            return null;
-        }
-        return this.userService.findUserByName(this.securityService.findLoggedInUser());
+    private CurrentUserDto getCurrentUser() {
+        return this.securityService.findLoggedInUser();
     }
 }

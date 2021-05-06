@@ -7,37 +7,62 @@ import com.mironov.image.studio.api.mappers.RoleMapper;
 import com.mironov.image.studio.api.mappers.UserCreateMapper;
 import com.mironov.image.studio.api.mappers.UserMapper;
 import com.mironov.image.studio.api.services.IUserService;
+import com.mironov.image.studio.api.utils.IEmailSender;
 import com.mironov.image.studio.entities.Role;
 import com.mironov.image.studio.entities.User;
+import com.mironov.image.studio.enums.Status;
+import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 
 @Service
+@Log4j2
 public class UserService implements IUserService {
 
     private final PasswordEncoder passwordEncoder;
     private final IUserDao userDao;
     private final IRoleDao roleDao;
+    private final IEmailSender emailSender;
 
-    public UserService(PasswordEncoder passwordEncoder, IUserDao userDao, IRoleDao roleDao) {
+    public UserService(PasswordEncoder passwordEncoder, IUserDao userDao, IRoleDao roleDao, IEmailSender emailSender) {
         this.passwordEncoder = passwordEncoder;
         this.userDao = userDao;
         this.roleDao = roleDao;
+        this.emailSender = emailSender;
     }
 
+    @Override
     public UserDto getUser(long id) {
         return UserMapper.mapUserDto(this.userDao.get(id));
     }
 
     @Override
-    public UserDto findUserByName(String name) {
-        return UserMapper.mapUserDto(this.userDao.getByName(name));
+    public boolean findUserByName(String name) {
+        try {
+            this.userDao.getByName(name);
+            return true;
+        }catch (NoResultException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean findUserByNumberPhone(long phone) {
+        try {
+            this.userDao.getByNumberPhone(phone);
+            return true;
+        }catch (NoResultException e){
+            return false;
+        }
     }
 
     @Override
@@ -61,14 +86,22 @@ public class UserService implements IUserService {
         this.userDao.update(user);
     }
 
+    @Override
     @Transactional
     public void createUser(UserCreateDto userDto) {
         UserCreateDto savedUser = UserCreateMapper.mapUserDto(this.userDao.create(UserCreateMapper.mapCreateUser(userDto)));
-//        UserCreateDto savedUser = UserMapper.mapUserDto(this.userDao.create(UserCreateMapper.mapUser(userDto)));
         List<RoleDto> roles = RoleMapper.mapRolesDto(this.roleDao.getAll());
         savedUser.getRoles().add(roles.get(0));
         savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        savedUser.setStatus(Status.INACTIVE);
+        savedUser.setCreatedDate(OffsetDateTime.now());
         this.userDao.update(UserCreateMapper.mapUser(savedUser));
+        log.info("Created new user. {}", savedUser.getUsername());
+        try {
+            this.emailSender.sendEmailFromAdmin(UserCreateMapper.mapCreateUser(savedUser), Base64.getEncoder().encodeToString(savedUser.getEmail().getBytes()));
+        } catch (Exception e) {
+            log.error("Failed to send email. Error massage: {}", e.getMessage());
+        }
     }
 
     @Override
@@ -99,4 +132,31 @@ public class UserService implements IUserService {
         this.userDao.update(entity);
     }
 
+    @Override
+    public boolean findUserByEmail(String email) {
+        try {
+            this.userDao.getUserByEmail(email);
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
+    @Override
+    @Transactional
+    public boolean createNewPassword(EmailDto email) {
+        try {
+            User user = this.userDao.getUserByEmail(email.getEmail());
+            String newPassword = RandomStringUtils.random(10, 0, 8, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
+            user.setPassword(passwordEncoder.encode(newPassword));
+            this.userDao.update(user);
+            this.emailSender.sendEmailWithNewPasswordFromAdmin(user, newPassword);
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        } catch (Exception e) {
+            log.error("Failed to send email. Error massage: {}", e.getMessage());
+            return true;
+        }
+    }
 }

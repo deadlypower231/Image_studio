@@ -1,6 +1,10 @@
+com\mironov\image\studio\services\ActivationService.class
 com\mironov\image\studio\services\RoleService.class
-com\mironov\image\studio\services\TournamentService.class
+com\mironov\image\studio\services\OrderService.class
+com\mironov\image\studio\services\MasterServicesService.class
 com\mironov\image\studio\configuration\ServiceConfiguration.class
+com\mironov\image\studio\services\ScheduleService.class
+com\mironov\image\studio\services\TournamentService.class
 com\mironov\image\studio\utils\LogoFileUploader.class
 com\mironov\image\studio\security\SecurityService.class
 com\mironov\image\studio\services\UserService.class

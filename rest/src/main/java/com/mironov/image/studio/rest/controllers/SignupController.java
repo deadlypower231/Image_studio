@@ -1,7 +1,6 @@
 package com.mironov.image.studio.rest.controllers;
 
 import com.mironov.image.studio.api.dto.UserCreateDto;
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
 import org.springframework.stereotype.Controller;
@@ -18,6 +17,8 @@ import javax.validation.Valid;
 @RequestMapping(value = "/signup")
 public class SignupController {
 
+    private static final String USER = "user";
+
     private final IUserService userService;
     private final ISecurityService securityService;
 
@@ -27,23 +28,31 @@ public class SignupController {
     }
 
     @GetMapping
-    public String newUser(@ModelAttribute("user") UserCreateDto userDto) {
+    public String newUser(@ModelAttribute(USER) UserCreateDto userDto) {
         return "signup/signup";
     }
 
+    //todo
+
     @PostMapping
-    public String createUser(@ModelAttribute("user") @Valid UserCreateDto user,
+    public String createUser(@ModelAttribute(USER) @Valid UserCreateDto user,
                              BindingResult bindingResult, Model model) {
+        boolean checkEmail = this.userService.findUserByEmail(user.getEmail());
+        boolean checkUsername = this.userService.findUserByName(user.getUsername());
+        boolean checkNumberPhone = this.userService.findUserByNumberPhone(user.getPhone());
+        if (checkNumberPhone){
+            bindingResult.rejectValue("phone", "phone", "Этот номер телефона уже занят!");
+        }
+        if (checkUsername){
+            bindingResult.rejectValue("username", "username", "Этот логин уже занят!");
+        }
+        if (checkEmail){
+            bindingResult.rejectValue("email", "email", "Эта электронная почта уже занята!");
+        }
         if (bindingResult.hasErrors()) {
             return "signup/signup";
         }
-        try {
             this.userService.createUser(user);
-            securityService.autoLogin(user.getUsername(), user.getPassword());
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "error/createEntityError";
-        }
         return "redirect:/";
     }
 

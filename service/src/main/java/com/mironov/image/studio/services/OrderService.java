@@ -2,12 +2,13 @@ package com.mironov.image.studio.services;
 
 import com.mironov.image.studio.api.dao.*;
 import com.mironov.image.studio.api.dto.IdDataOrderDto;
-import com.mironov.image.studio.api.dto.UserDto;
+import com.mironov.image.studio.api.dto.OrderDto;
+import com.mironov.image.studio.api.mappers.OrderMapper;
 import com.mironov.image.studio.api.services.IOrderService;
 import com.mironov.image.studio.entities.Order;
 import com.mironov.image.studio.entities.Schedule;
 import com.mironov.image.studio.entities.User;
-import com.mironov.image.studio.enums.State;
+import com.mironov.image.studio.enums.Status;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,21 +35,26 @@ public class OrderService implements IOrderService {
 
     @Override
     @Transactional
-    public void createOrder(IdDataOrderDto idDataOrderDto, UserDto userDto) {
+    public void createOrder(IdDataOrderDto idDataOrderDto, long id) {
         Order order = new Order();
         order.setMasterService(this.masterServiceDao.get(idDataOrderDto.getIdService()));
         order.setMaster(this.userDao.get(idDataOrderDto.getIdMaster()));
         Schedule schedule = this.scheduleDao.get(idDataOrderDto.getIdSchedule());
-        schedule.setState(State.INACTIVE);
+        schedule.setStatus(Status.INACTIVE);
         order.setSchedule(schedule);
         order.setTournament(this.tournamentDao.get(idDataOrderDto.getIdTournament()));
         order.setPrice(order.getMasterService().getPrice());
         order.setSubmitDate(OffsetDateTime.now());
         Order saved = this.orderDao.create(order);
-        User currentUser = this.userDao.get(userDto.getId());
+        User currentUser = this.userDao.get(id);
         List<Order> orders = new ArrayList<>(currentUser.getOrders());
         orders.add(saved);
         currentUser.setOrders(orders);
         this.userDao.update(currentUser);
+    }
+
+    @Override
+    public List<OrderDto> getAllOrdersByCurrentUser(long id) {
+        return OrderMapper.mapOrdersDto(this.orderDao.getAllByCurrentUser(id));
     }
 }

@@ -18,6 +18,7 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 @SuperBuilder
 public class Order extends AEntity<Long> implements Serializable {
+
     @Column(name = "price")
     private double price;
     @Column(name = "submit_date")
@@ -34,4 +35,5 @@ public class Order extends AEntity<Long> implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "master_id", referencedColumnName = "id")
     private User master;
+
 }

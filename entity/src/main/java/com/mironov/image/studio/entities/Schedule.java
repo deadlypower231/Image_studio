@@ -1,7 +1,6 @@
 package com.mironov.image.studio.entities;
 
-import com.mironov.image.studio.enums.State;
-import javafx.concurrent.Worker;
+import com.mironov.image.studio.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +24,10 @@ public class Schedule extends AEntity<Long> implements Serializable {
     private String time;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "tournament_id",referencedColumnName = "id")
+    @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
     private List<Order> order;
-    @Column(name = "state")
-    private State state;
+    @Column(name = "status")
+    private Status status;
 }

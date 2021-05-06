@@ -1,6 +1,6 @@
 package com.mironov.image.studio.entities;
 
-import com.mironov.image.studio.enums.State;
+import com.mironov.image.studio.enums.Status;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -12,13 +12,13 @@ public abstract class Schedule_ extends com.mironov.image.studio.entities.AEntit
 
 	public static volatile SingularAttribute<Schedule, String> time;
 	public static volatile SingularAttribute<Schedule, Tournament> tournament;
-	public static volatile SingularAttribute<Schedule, State> state;
 	public static volatile ListAttribute<Schedule, Order> order;
+	public static volatile SingularAttribute<Schedule, Status> status;
 
 	public static final String TIME = "time";
 	public static final String TOURNAMENT = "tournament";
-	public static final String STATE = "state";
 	public static final String ORDER = "order";
+	public static final String STATUS = "status";
 
 }
 

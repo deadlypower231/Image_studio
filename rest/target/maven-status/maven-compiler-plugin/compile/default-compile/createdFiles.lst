@@ -1,5 +1,15 @@
+com\mironov\image\studio\rest\controllers\ActivationController.class
 com\mironov\image\studio\rest\controllers\MainController.class
-com\mironov\image\studio\rest\controllers\AdminControllers.class
+com\mironov\image\studio\rest\controllers\OrderController.class
+com\mironov\image\studio\utils\CustomAccessDeniedHandler.class
+com\mironov\image\studio\rest\controllers\admins\AdminTournamentController.class
+com\mironov\image\studio\rest\controllers\admins\AdminUserController.class
+com\mironov\image\studio\rest\controllers\TournamentController.class
 com\mironov\image\studio\configuration\SecurityConfiguration.class
 com\mironov\image\studio\rest\controllers\SignupController.class
-com\mironov\image\studio\rest\controllers\UserController.class
+com\mironov\image\studio\rest\controllers\LoginController.class
+com\mironov\image\studio\rest\controllers\admins\AdminMasterServiceController.class
+com\mironov\image\studio\rest\controllers\admins\AdminMasterController.class
+com\mironov\image\studio\rest\controllers\MasterController.class
+com\mironov\image\studio\rest\controllers\MyOrderController.class
+com\mironov\image\studio\rest\controllers\SettingController.class

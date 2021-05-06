@@ -8,6 +8,8 @@ import java.util.Set;
 public interface IUserDao extends IAGenericDao<User> {
     User getByName(String name);
 
+    User getByNumberPhone(long phone);
+
     List<User> getAll();
 
     List<User> getAllMasters();
@@ -15,5 +17,7 @@ public interface IUserDao extends IAGenericDao<User> {
     List<User> searchUsers(String text);
 
     Set<User> searchMasters(List<String> strings);
+
+    User getUserByEmail(String email);
 
 }

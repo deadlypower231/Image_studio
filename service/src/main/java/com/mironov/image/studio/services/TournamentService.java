@@ -4,16 +4,14 @@ import com.mironov.image.studio.api.dao.IScheduleDao;
 import com.mironov.image.studio.api.dao.ITournamentDao;
 import com.mironov.image.studio.api.dao.IUserDao;
 import com.mironov.image.studio.api.dto.IdUsersDto;
-import com.mironov.image.studio.api.dto.ScheduleDto;
 import com.mironov.image.studio.api.dto.TimeDto;
 import com.mironov.image.studio.api.dto.TournamentDto;
-import com.mironov.image.studio.api.mappers.ScheduleMapper;
 import com.mironov.image.studio.api.mappers.TournamentMapper;
 import com.mironov.image.studio.api.services.ITournamentService;
 import com.mironov.image.studio.entities.Schedule;
 import com.mironov.image.studio.entities.Tournament;
 import com.mironov.image.studio.entities.User;
-import com.mironov.image.studio.enums.State;
+import com.mironov.image.studio.enums.Status;
 import com.mironov.image.studio.utils.LogoFileUploader;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -22,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -86,7 +83,7 @@ public class TournamentService implements ITournamentService {
         Schedule schedule = new Schedule();
         schedule.setTime(timeDto.getTime());
         schedule.setTournament(this.tournamentDao.get(idTournament));
-        schedule.setState(State.ACTIVE);
+        schedule.setStatus(Status.ACTIVE);
         Schedule savedSchedule = this.scheduleDao.create(schedule);
         User user = this.userDao.get(idMaster);
         user.getSchedules().add(savedSchedule);

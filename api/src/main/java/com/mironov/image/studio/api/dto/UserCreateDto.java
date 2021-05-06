@@ -4,10 +4,12 @@ import com.mironov.image.studio.entities.Description;
 import com.mironov.image.studio.entities.Order;
 import com.mironov.image.studio.entities.Schedule;
 import com.mironov.image.studio.entities.Tournament;
+import com.mironov.image.studio.enums.Status;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class UserCreateDto {
     @Size(min = 2, max = 15, message = "Введите имя от 2 до 15 символов")
     private String lastName;
     private List<RoleDto> roles;
+    private Status status;
+    private OffsetDateTime createdDate;
 
     public List<RoleDto> getRoles() {
         if (roles == null){

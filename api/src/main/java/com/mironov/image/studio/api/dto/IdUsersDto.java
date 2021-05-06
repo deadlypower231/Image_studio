@@ -11,4 +11,5 @@ import java.util.List;
 @Builder
 public class IdUsersDto {
     private List<Long> ids;
+    private long id;
 }

@@ -1,9 +1,13 @@
 package com.mironov.image.studio.dao;
 
 import com.mironov.image.studio.api.dao.IUserDao;
-import com.mironov.image.studio.entities.*;
+import com.mironov.image.studio.entities.Role;
+import com.mironov.image.studio.entities.Role_;
+import com.mironov.image.studio.entities.User;
+import com.mironov.image.studio.entities.User_;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.*;
@@ -15,13 +19,25 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
     }
 
     @Override
-    public User getByName(String name) {
+    public User getByName(String name) throws NoResultException{
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
         criteriaQuery
                 .select(root)
                 .where(criteriaBuilder.equal(root.get(User_.USERNAME), name));
+        TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
+        return q.getSingleResult();
+    }
+
+    @Override
+    public User getByNumberPhone(long phone) throws NoResultException{
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+        criteriaQuery
+                .select(root)
+                .where(criteriaBuilder.equal(root.get(User_.PHONE), phone));
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
         return q.getSingleResult();
     }
@@ -59,7 +75,7 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
     @Override
     public Set<User> searchMasters(List<String> strings) {
         Set<User> result = new HashSet<>();
-        for (int i = 0; i <strings.size() ; i++) {
+        for (int i = 0; i < strings.size(); i++) {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
             Root<User> users = criteriaQuery.from(User.class);
@@ -80,4 +96,15 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
         return result;
     }
 
+    @Override
+    public User getUserByEmail(String email) throws NoResultException {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> users = criteriaQuery.from(User.class);
+        criteriaQuery
+                .select(users)
+                .where(criteriaBuilder.equal(users.get(User_.EMAIL),email));
+        TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
+        return q.getSingleResult();
+    }
 }

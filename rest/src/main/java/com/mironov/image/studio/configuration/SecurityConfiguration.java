@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -16,9 +17,11 @@ import javax.sql.DataSource;
 @EnableJpaRepositories
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private final AccessDeniedHandler accessDeniedHandler;
     private final DataSource dataSource;
 
-    public SecurityConfiguration(DataSource dataSource) {
+    public SecurityConfiguration(AccessDeniedHandler accessDeniedHandler, DataSource dataSource) {
+        this.accessDeniedHandler = accessDeniedHandler;
         this.dataSource = dataSource;
     }
 
@@ -38,18 +41,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/images/**", "/js/**", "/styles/**").permitAll()
-                .antMatchers("/", "/signup", "/login").anonymous()
-                .antMatchers("/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
-                .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).deleteCookies("JSESSIONID")
+                .antMatchers("/", "/signup", "/login/**", "/activation/**").anonymous()
+                .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
+                .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
-                .and().rememberMe().key("uniqueKey").tokenValiditySeconds(2678400);
-//                .and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+                .and().rememberMe().key("uniqueKey").tokenValiditySeconds(2678400)
+                .and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource).authoritiesByUsernameQuery(
                 "SELECT user.username as username, role.role as role FROM user INNER JOIN user_role ON user.id = user_role.user_id INNER JOIN role ON user_role.role_id = role.id WHERE user.username = ?")
-                .usersByUsernameQuery("select username, password, 1 enabled from user where username = ?");
+                .usersByUsernameQuery("select username, password, status from user where username = ?");
     }
 }

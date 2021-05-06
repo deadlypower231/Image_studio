@@ -11,7 +11,7 @@
 <nav class="navbar navbar-light head-color" style="height : 4.5rem;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img sr="../images/logo.jpg"c alt="" width="30" height="24" class="d-inline-block align-top">
+            <img src="../images/logo.jpg" alt="" width="30" height="24" class="d-inline-block align-top">
             Mironov
         </a>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -31,7 +31,6 @@
             <label for="username">User name:</label>
             <input id="username" class="form-control" type="text" th:field="*{username}" required/>
             <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
-            <br/>
             <div class="form-group">
                     <label for="firstName">First name:</label> <input
                     id="firstName" class="form-control" type="text"

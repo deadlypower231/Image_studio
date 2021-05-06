@@ -32,24 +32,20 @@ public class SettingController {
 
     @GetMapping
     public String settingsPage(Model model) {
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute(USER, getCurrentUser());
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(USER, this.userService.getUser(this.securityService.findLoggedInUser().getId()));
         return SETTINGS;
     }
 
     @PostMapping
     public String saveSettings(@ModelAttribute(USER) @Valid UserUpdateDto userUpdateDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute(CURRENT_USER, getCurrentUser());
+            model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
             model.addAttribute(USER, userUpdateDto);
             return SETTINGS;
         }
         this.userService.updateUser(userUpdateDto);
         return "redirect:/settings";
-    }
-
-    private UserDto getCurrentUser() {
-        return this.userService.findUserByName(this.securityService.findLoggedInUser());
     }
 
 }

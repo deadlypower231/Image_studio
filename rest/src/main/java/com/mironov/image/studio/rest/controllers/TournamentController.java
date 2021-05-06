@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TournamentController {
 
     private static final String CURRENT_USER = "currentUser";
+    private static final String TOURNAMENTS = "tournaments";
+    private static final String TOURNAMENT = "tournament";
 
     private final IUserService userService;
     private final ISecurityService securityService;
@@ -27,22 +29,18 @@ public class TournamentController {
     }
 
     @GetMapping
-    public String getTournaments (Model model){
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute("tournaments", this.tournamentService.getAll());
-        return "tournaments";
+    public String getTournaments(Model model) {
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(TOURNAMENTS, this.tournamentService.getAll());
+        return TOURNAMENTS;
     }
 
     @GetMapping
     @RequestMapping("/moreInfo/{id}")
-    public String getTournament(@PathVariable(name = "id") long id, Model model){
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute("tournament", this.tournamentService.get(id));
+    public String getTournament(@PathVariable(name = "id") long id, Model model) {
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(TOURNAMENT, this.tournamentService.get(id));
         return "tournamentsMoreInfo";
-    }
-
-    private UserDto getCurrentUser() {
-        return this.userService.findUserByName(this.securityService.findLoggedInUser());
     }
 
 }

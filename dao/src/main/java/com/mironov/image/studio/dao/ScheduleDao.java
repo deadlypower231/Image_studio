@@ -5,7 +5,7 @@ import com.mironov.image.studio.entities.Schedule;
 import com.mironov.image.studio.entities.Schedule_;
 import com.mironov.image.studio.entities.User;
 import com.mironov.image.studio.entities.User_;
-import com.mironov.image.studio.enums.State;
+import com.mironov.image.studio.enums.Status;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -27,7 +27,7 @@ public class ScheduleDao extends AGenericDao<Schedule> implements IScheduleDao {
         Predicate predicate = criteriaBuilder.and(
                 criteriaBuilder.equal(root.get(User_.ID),idMaster),
                 criteriaBuilder.equal(schedules.get(Schedule_.TOURNAMENT), idTournament),
-                criteriaBuilder.equal(schedules.get(Schedule_.STATE), State.ACTIVE));
+                criteriaBuilder.equal(schedules.get(Schedule_.STATUS), Status.ACTIVE));
         criteria.select(schedules)
                 .where(predicate)
                 .orderBy(criteriaBuilder.asc(schedules.get(Schedule_.TIME)));

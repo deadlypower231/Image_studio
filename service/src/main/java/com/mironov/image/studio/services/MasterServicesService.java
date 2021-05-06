@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,8 +54,4 @@ public class MasterServicesService implements IMasterServicesService {
         }
     }
 
-    @Override
-    public List<MasterServiceDto> getAllFromMaster(long idMaster) {
-        return null;
-    }
 }

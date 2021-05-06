@@ -15,37 +15,40 @@ import javax.validation.Valid;
 public class OrderController {
 
     private static final String CURRENT_USER = "currentUser";
+    private static final String TOURNAMENTS = "tournaments";
+    private static final String TOURNAMENT = "tournament";
+    private static final String ORDERS = "orders";
+    private static final String ORDER = "order";
+    private static final String SCHEDULES = "schedules";
+    private static final String MASTER = "master";
 
     private final IUserService userService;
     private final ISecurityService securityService;
     private final IScheduleService scheduleService;
     private final ITournamentService tournamentService;
-    private final IMasterServicesService masterServicesService;
     private final IOrderService orderService;
 
     public OrderController(IUserService userService, ISecurityService securityService, IScheduleService scheduleService,
-                           ITournamentService tournamentService, IMasterServicesService masterServicesService,
-                           IOrderService orderService) {
+                           ITournamentService tournamentService, IOrderService orderService) {
         this.userService = userService;
         this.securityService = securityService;
         this.scheduleService = scheduleService;
         this.tournamentService = tournamentService;
-        this.masterServicesService = masterServicesService;
         this.orderService = orderService;
     }
 
     @GetMapping
     public String orderPage(Model model) {
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute("tournaments", this.tournamentService.getAll());
-        return "orders";
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(TOURNAMENTS, this.tournamentService.getAll());
+        return ORDERS;
     }
 
     @GetMapping
     @RequestMapping("/{idTournament}")
     public String orderTournamentPage(@PathVariable(name = "idTournament") long idTournament, Model model) {
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute("tournament", this.tournamentService.get(idTournament));
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(TOURNAMENT, this.tournamentService.get(idTournament));
         return "ordersTournament";
     }
 
@@ -54,32 +57,27 @@ public class OrderController {
     public String orderTournamentMasterPage(@PathVariable(name = "idTournament") long idTournament,
                                             @PathVariable(name = "idMaster") long idMaster,
                                             Model model) {
-        model.addAttribute(CURRENT_USER, getCurrentUser());
-        model.addAttribute("tournament", this.tournamentService.get(idTournament));
-        model.addAttribute("master", this.userService.getUser(idMaster));
-        model.addAttribute("schedules", this.scheduleService.getSchedulesByIdTournamentIdMasterIsActive(idTournament, idMaster));
-        model.addAttribute("order", new IdDataOrderDto(idTournament, idMaster));
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(TOURNAMENT, this.tournamentService.get(idTournament));
+        model.addAttribute(MASTER, this.userService.getUser(idMaster));
+        model.addAttribute(SCHEDULES, this.scheduleService.getSchedulesByIdTournamentIdMasterIsActive(idTournament, idMaster));
+        model.addAttribute(ORDER, new IdDataOrderDto(idTournament, idMaster));
         return "ordersTournamentSchedules";
     }
 
     @PostMapping
     @RequestMapping("/registration")
-    public String createOrder(@ModelAttribute("order") @Valid IdDataOrderDto idDataOrderDto, BindingResult bindingResult, Model model) {
+    public String createOrder(@ModelAttribute(ORDER) @Valid IdDataOrderDto idDataOrderDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
-            model.addAttribute(CURRENT_USER, getCurrentUser());
-            model.addAttribute("tournament", this.tournamentService.get(idDataOrderDto.getIdTournament()));
-            model.addAttribute("master", this.userService.getUser(idDataOrderDto.getIdMaster()));
-            model.addAttribute("schedules", this.scheduleService.getSchedulesByIdTournamentIdMasterIsActive(idDataOrderDto.getIdTournament(), idDataOrderDto.getIdMaster()));
-            model.addAttribute("order", idDataOrderDto);
+            model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+            model.addAttribute(TOURNAMENT, this.tournamentService.get(idDataOrderDto.getIdTournament()));
+            model.addAttribute(MASTER, this.userService.getUser(idDataOrderDto.getIdMaster()));
+            model.addAttribute(SCHEDULES, this.scheduleService.getSchedulesByIdTournamentIdMasterIsActive(idDataOrderDto.getIdTournament(), idDataOrderDto.getIdMaster()));
+            model.addAttribute(ORDER, idDataOrderDto);
             return "ordersTournamentSchedules";
         }
-        this.orderService.createOrder(idDataOrderDto, getCurrentUser());
+        this.orderService.createOrder(idDataOrderDto, this.securityService.findLoggedInUser().getId());
         return "redirect:/tournaments";
-    }
-
-
-    private UserDto getCurrentUser() {
-        return this.userService.findUserByName(this.securityService.findLoggedInUser());
     }
 
 }

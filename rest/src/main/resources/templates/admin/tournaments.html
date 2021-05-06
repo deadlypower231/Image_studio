@@ -80,8 +80,9 @@
                         style="color:black;"></h6>
                 </div>
                 <div class="modal-body">
-                    <form action="#" th:action="'/admin/tournaments/' + ${{tournament.id}}" th:object="${idUsers}"
+                    <form action="#" th:action="'/admin/tournaments/'" th:object="${idUsers}"
                           th:method="post">
+                        <input type="hidden" name="id" th:value="${tournament.id}">
                         <div th:each="master: ${masters}">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" th:field="*{ids}"

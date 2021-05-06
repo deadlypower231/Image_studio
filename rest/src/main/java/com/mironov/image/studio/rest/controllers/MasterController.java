@@ -1,6 +1,5 @@
 package com.mironov.image.studio.rest.controllers;
 
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/masters")
 public class MasterController {
 
+    private static final String CURRENT_USER = "currentUser";
+    private static final String MASTERS = "masters";
+
     private final IUserService userService;
     private final ISecurityService securityService;
 
@@ -21,14 +23,10 @@ public class MasterController {
     }
 
     @GetMapping
-    public String getMasters(Model model){
-        model.addAttribute("currentUser", getCurrentUser());
-        model.addAttribute("masters", this.userService.getAllMasters());
-        return "masters";
-    }
-
-    private UserDto getCurrentUser() {
-        return this.userService.findUserByName(this.securityService.findLoggedInUser());
+    public String getMasters(Model model) {
+        model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
+        model.addAttribute(MASTERS, this.userService.getAllMasters());
+        return MASTERS;
     }
 
 }
