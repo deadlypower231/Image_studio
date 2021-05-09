@@ -5,54 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="535458d0-0789-48e3-9d4b-320918f6a032" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/masters/MasterRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersToTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40d74b3c30897032ba9546be8922bdb67656a4c4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60aff71649f6dd5741d5af2d456dc310f4ab194d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/9/e9f08829bb75b3f36360cefcfe8aeb2ddecd33f1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IAGenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IAGenericDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/ITournamentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/ITournamentDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/CurrentUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/CurrentUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/CurrentUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/CurrentUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/ISecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/ISecurityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/ITournamentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/ITournamentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/ITournamentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/ITournamentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/ITournamentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/ITournamentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/TournamentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/TournamentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/TournamentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/TournamentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/ActivationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/ActivationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/masters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/myOrders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/myOrders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournamentSchedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournamentSchedules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/tournamentsMoreInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/tournamentsMoreInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/ActivationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/ActivationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/masters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/myOrders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/myOrders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournamentSchedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournamentSchedules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/tournamentsMoreInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/tournamentsMoreInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/security/SecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/security/SecurityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ActivationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ActivationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/TournamentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/TournamentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/configuration/MailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/configuration/MailConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

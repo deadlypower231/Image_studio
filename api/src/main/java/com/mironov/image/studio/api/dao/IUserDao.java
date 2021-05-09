@@ -23,5 +23,5 @@ public interface IUserDao extends IAGenericDao<User> {
     List<User> searchUsers(String text);
 
     Set<User> searchMasters(List<String> strings);
-    
+
 }
