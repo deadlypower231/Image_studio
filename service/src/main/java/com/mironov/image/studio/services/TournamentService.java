@@ -88,4 +88,9 @@ public class TournamentService implements ITournamentService {
         User user = this.userDao.get(idMaster);
         user.getSchedules().add(savedSchedule);
     }
+
+    @Override
+    public List<TournamentDto> getTournamentsWithMaster(long id) {
+        return TournamentMapper.mapTournamentsDto(this.tournamentDao.getTournamentWithMaster(id));
+    }
 }

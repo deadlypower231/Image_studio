@@ -6,6 +6,7 @@ import com.mironov.image.studio.entities.Role_;
 import com.mironov.image.studio.entities.User;
 import com.mironov.image.studio.entities.User_;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -13,9 +14,23 @@ import javax.persistence.criteria.*;
 import java.util.*;
 
 @Repository
+@Transactional(readOnly = true)
 public class UserDao extends AGenericDao<User> implements IUserDao {
+
     public UserDao() {
         super(User.class);
+    }
+
+    @Override
+    public boolean checkUserByName(String name) throws NoResultException{
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+        criteriaQuery
+                .select(root)
+                .where(criteriaBuilder.equal(root.get(User_.USERNAME), name));
+        TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
+        return q.getSingleResult()!=null;
     }
 
     @Override
@@ -107,4 +122,5 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
         return q.getSingleResult();
     }
+
 }

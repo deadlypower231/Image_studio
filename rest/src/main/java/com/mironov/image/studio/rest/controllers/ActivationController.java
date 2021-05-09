@@ -18,8 +18,6 @@ public class ActivationController {
         this.activationService = activationService;
     }
 
-    //todo make a page when the email was sent
-
     @GetMapping
     @RequestMapping("/{activation}")
     public String activation(@PathVariable(name = "activation") String activation, Model model) {

@@ -2,11 +2,11 @@
         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Image Studio</title>
-    <link href="styles/styles.css" rel="stylesheet"/>
-    <link href="styles/bootstrap.min.css" rel="stylesheet"/>
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link href="../styles/styles.css" rel="stylesheet"/>
+    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/popper.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 
 <body class="bg-color">
@@ -48,23 +48,24 @@
         <a class="nav-link" href="/masters">Мастера</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/order">Запись на турнир</a>
+        <a class="nav-link" href="/order">Запись на турнир</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">О нас</a>
     </li>
 </ul>
-<div class="row row-cols-1 row-cols-md-4">
-    <div class="col" th:each="tour : ${tournaments}">
-        <div class="card h-100">
-            <img th:src="'../images/' + @{${tour.name}} + '.jpg'" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${tour.name}"></h5>
-                <p class="card-text" th:text="${tour.description.shortDescription}"></p>
-            </div>
-            <a th:href="'/order/'+@{${tour.id}}">
-                <button type="button" class="btn btn-info btn-sm-2">Запись на турнир</button>
-            </a>
+
+<h3>Активные турниры:</h3>
+<div class="card text-white" style="max-width: 18rem;">
+    <div class="card text-white bg-success" style="max-width: 18rem;">
+        <div th:each="tournament : ${tournaments}">
+        <div class="card-header" th:text="${tournament.name}"></div>
+        <div class="card-body">
+<!--            <h5 class="card-title" th:text="${order.master.firstName} + ' ' + ${order.master.lastName}"></h5>-->
+<!--            <p class="card-text" th:text="'Время: ' + ${order.scheduleDto.time}"></p>-->
+<!--            <p class="card-text" th:text="'Услуга: ' + ${order.masterServiceDto.name}"></p>-->
+<!--            <p class="card-text" th:text="'Цена: ' + ${order.scheduleDto.time}"></p>-->
+        </div>
         </div>
     </div>
 </div>

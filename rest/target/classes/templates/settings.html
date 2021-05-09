@@ -20,6 +20,9 @@
             <div sec:authorize="hasRole('ADMIN')">
                 <a class="dropdown-item" href="/admin/users">Страница администратора</a>
             </div>
+            <div sec:authorize="hasRole('MASTER')">
+                <a class="dropdown-item" href="/master/tournaments">Мои турниры</a>
+            </div>
             <a class="dropdown-item" href="/orders">Мои заказы</a>
             <a class="dropdown-item" href="/settings">Настройки</a>
             <div class="dropdown-divider"></div>
@@ -56,6 +59,7 @@
     <div class="position-absolute top-0 start-50 translate-middle-x" style="width:30rem;">
         <form action="/settings"
               th:object="${user}" th:method="post">
+            <input type="hidden" name="id" th:value="${currentUser.id}">
             <div class="form-group">
                 <div class="form-group">
                     <label for="username" class="column-resize-line">Логин:</label>

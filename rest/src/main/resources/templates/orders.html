@@ -19,6 +19,9 @@
             <div sec:authorize="hasRole('ADMIN')">
                 <a class="dropdown-item" href="/admin/users">Страница администратора</a>
             </div>
+            <div sec:authorize="hasRole('MASTER')">
+                <a class="dropdown-item" href="/master/tournaments">Мои турниры</a>
+            </div>
             <a class="dropdown-item" href="/orders">Мои заказы</a>
             <a class="dropdown-item" href="/settings">Настройки</a>
             <div class="dropdown-divider"></div>

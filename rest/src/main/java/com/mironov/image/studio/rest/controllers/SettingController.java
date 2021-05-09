@@ -1,6 +1,5 @@
 package com.mironov.image.studio.rest.controllers;
 
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.dto.UserUpdateDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
@@ -39,6 +38,18 @@ public class SettingController {
 
     @PostMapping
     public String saveSettings(@ModelAttribute(USER) @Valid UserUpdateDto userUpdateDto, BindingResult bindingResult, Model model) {
+        if (this.userService.findUserByName(userUpdateDto.getUsername()) &&
+                !this.securityService.findLoggedInUser().getUsername().equals(userUpdateDto.getUsername())) {
+            bindingResult.rejectValue("username", "username", "Этот логин уже занят!");
+        }
+        if (this.userService.findUserByEmail(userUpdateDto.getEmail()) &&
+                !this.securityService.findLoggedInUser().getEmail().equals(userUpdateDto.getEmail())) {
+            bindingResult.rejectValue("email", "email", "Эта электронная почта уже занята!");
+        }
+        if (this.userService.findUserByNumberPhone(userUpdateDto.getPhone()) &&
+                this.securityService.findLoggedInUser().getNumberPhone() != userUpdateDto.getPhone()) {
+            bindingResult.rejectValue("phone", "phone", "Этот номер телефона уже занят!");
+        }
         if (bindingResult.hasErrors()) {
             model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
             model.addAttribute(USER, userUpdateDto);

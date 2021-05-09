@@ -12,5 +12,8 @@ public class CurrentUserDto {
     private long id;
     private String firstName;
     private String lastName;
+    private String username;
+    private String email;
+    private long numberPhone;
 
 }

@@ -1,8 +1,4 @@
 
-v
-Fapi/src/main/java/com/mironov/image/studio/api/dao/ITournamentDao.java,6\0\60aff71649f6dd5741d5af2d456dc310f4ab194d
-†
-Vservice/src/main/java/com/mironov/image/studio/configuration/ServiceConfiguration.java,4\0\40d74b3c30897032ba9546be8922bdb67656a4c4
 t
 Dapi/src/main/java/com/mironov/image/studio/api/dto/UserRolesDto.java,c\e\ce35b4821d7e85fc0b6b847c07e76c085bd46091
 o
@@ -13,8 +9,6 @@ q
 Aapi/src/main/java/com/mironov/image/studio/api/dto/SearchDto.java,e\3\e3558ac37efc7579c9e9463e9cff8a957a402ae0
 u
 Eapi/src/main/java/com/mironov/image/studio/api/dto/ServiceIdsDto.java,f\d\fdbadde744c150e2df2ed2f963ec096606c4d3db
-u
-Eapi/src/main/java/com/mironov/image/studio/api/dto/TournamentDto.java,e\9\e9f08829bb75b3f36360cefcfe8aeb2ddecd33f1
 v
 Fapi/src/main/java/com/mironov/image/studio/api/mappers/RoleMapper.java,8\7\876b6f0d2f64ac5192166bbb6011e0c685c969bf
 z
@@ -25,3 +19,5 @@ Fapi/src/main/java/com/mironov/image/studio/api/mappers/UserMapper.java,7\f\7f9
 Oapi/src/main/java/com/mironov/image/studio/api/mappers/MasterServiceMapper.java,c\2\c255afd0f3db4a2e1ca4ba62fdcf78400076656b
 x
 Hservice/src/main/java/com/mironov/image/studio/services/RoleService.java,1\f\1ff07cf39fe625befd50e37934a065cc1e2a5197
+p
+@api/src/main/java/com/mironov/image/studio/api/dao/IRoleDao.java,3\f\3f3434b4eb948658629adad8b4043c2253bf5f06

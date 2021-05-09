@@ -12,6 +12,9 @@ public class CurrentUserMapper {
                 .id(source.getId())
                 .firstName(source.getFirstName())
                 .lastName(source.getLastName())
+                .username(source.getUsername())
+                .email(source.getEmail())
+                .numberPhone(source.getPhone())
                 .build();
     }
 

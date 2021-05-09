@@ -64,7 +64,6 @@ public class AdminUserController {
         return REDIRECT_ADMIN_USERS;
     }
 
-
     @GetMapping("/search")
     public String searchUser(@ModelAttribute(SEARCH) @Valid SearchDto searchDto, BindingResult bindingResult, Model model) {
         model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
