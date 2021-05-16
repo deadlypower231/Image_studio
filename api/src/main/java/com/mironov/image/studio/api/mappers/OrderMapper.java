@@ -4,6 +4,7 @@ import com.mironov.image.studio.api.dto.*;
 import com.mironov.image.studio.entities.*;
 import lombok.experimental.UtilityClass;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 @UtilityClass
 public class OrderMapper {
 
-    public Order mapOrder(OrderDto source){
+    public Order mapOrder(OrderDto source) {
         return Order.builder()
                 .id(source.getId())
                 .submitDate(source.getSubmitDate())
@@ -23,7 +24,7 @@ public class OrderMapper {
                 .build();
     }
 
-    public OrderDto mapOrderDto(Order source){
+    public OrderDto mapOrderDto(Order source) {
         return OrderDto.builder()
                 .id(source.getId())
                 .submitDate(source.getSubmitDate())
@@ -35,35 +36,37 @@ public class OrderMapper {
                 .build();
     }
 
-    public List<Order> mapOrders (List<OrderDto> source){
+    public List<Order> mapOrders(List<OrderDto> source) {
         return source.stream().map(OrderMapper::mapOrder).collect(Collectors.toList());
     }
 
-    public List<OrderDto> mapOrdersDto (List<Order> source){
+    public List<OrderDto> mapOrdersDto(List<Order> source) {
         return source.stream().map(OrderMapper::mapOrderDto).collect(Collectors.toList());
     }
 
-    private Tournament mapTournament (TournamentDto source){
+    private Tournament mapTournament(TournamentDto source) {
         return Tournament.builder()
                 .id(source.getId())
                 .address(source.getAddress())
                 .name(source.getName())
-                .date(source.getDate())
+                .date(Date.valueOf(source.getDate()))
+                .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))
                 .build();
     }
 
-    private TournamentDto mapTournamentDto (Tournament source){
+    private TournamentDto mapTournamentDto(Tournament source) {
         return TournamentDto.builder()
                 .id(source.getId())
                 .address(source.getAddress())
                 .name(source.getName())
-                .date(source.getDate())
+                .date(String.valueOf(source.getDate()))
+                .status(source.getStatus())
                 .description(mapDescriptionDto(source.getDescription()))
                 .build();
     }
 
-    private Description mapDescription(DescriptionDto source){
+    private Description mapDescription(DescriptionDto source) {
         return Description.builder()
                 .id(source.getId())
                 .shortDescription(source.getShortDescription())
@@ -71,7 +74,7 @@ public class OrderMapper {
                 .build();
     }
 
-    private DescriptionDto mapDescriptionDto(Description source){
+    private DescriptionDto mapDescriptionDto(Description source) {
         return DescriptionDto.builder()
                 .id(source.getId())
                 .shortDescription(source.getShortDescription())
@@ -79,7 +82,7 @@ public class OrderMapper {
                 .build();
     }
 
-    private User mapUser(UserDto source){
+    private User mapUser(UserDto source) {
         return User.builder()
                 .id(source.getId())
                 .firstName(source.getFirstName())
@@ -90,7 +93,8 @@ public class OrderMapper {
                 .description(source.getDescription())
                 .build();
     }
-    private UserDto mapUserDto(User source){
+
+    private UserDto mapUserDto(User source) {
         return UserDto.builder()
                 .id(source.getId())
                 .firstName(source.getFirstName())

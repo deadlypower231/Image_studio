@@ -6,6 +6,7 @@ import com.mironov.image.studio.entities.Description;
 import com.mironov.image.studio.entities.Tournament;
 import lombok.experimental.UtilityClass;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,8 +17,9 @@ public class TournamentMapper {
         return Tournament.builder()
                 .id(source.getId())
                 .address(source.getAddress())
-                .date(source.getDate())
+                .date(Date.valueOf(source.getDate()))
                 .name(source.getName())
+                .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))
                 .users(UserMapper.mapUsers(source.getUsers()))
                 .build();
@@ -27,8 +29,9 @@ public class TournamentMapper {
         return TournamentDto.builder()
                 .id(source.getId())
                 .address(source.getAddress())
-                .date(source.getDate())
+                .date(String.valueOf(source.getDate()))
                 .name(source.getName())
+                .status(source.getStatus())
                 .description(mapDescriptionDto(source.getDescription()))
                 .users(UserMapper.mapUsersDto(source.getUsers()))
                 .build();
@@ -37,8 +40,9 @@ public class TournamentMapper {
     public Tournament mapTournamentCreate(TournamentDto source) {
         return Tournament.builder()
                 .address(source.getAddress())
-                .date(source.getDate())
+                .date(Date.valueOf(source.getDate()))
                 .name(source.getName())
+                .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))
                 .build();
     }
@@ -51,7 +55,7 @@ public class TournamentMapper {
         return source.stream().map(TournamentMapper::mapTournamentDto).collect(Collectors.toList());
     }
 
-    private Description mapDescription(DescriptionDto source){
+    private Description mapDescription(DescriptionDto source) {
         return Description.builder()
                 .id(source.getId())
                 .shortDescription(source.getShortDescription())
@@ -59,7 +63,7 @@ public class TournamentMapper {
                 .build();
     }
 
-    private DescriptionDto mapDescriptionDto(Description source){
+    private DescriptionDto mapDescriptionDto(Description source) {
         return DescriptionDto.builder()
                 .id(source.getId())
                 .shortDescription(source.getShortDescription())

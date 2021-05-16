@@ -1,16 +1,15 @@
 package com.mironov.image.studio.rest.controllers.admins;
 
-import com.mironov.image.studio.api.dto.CurrentUserDto;
+import com.mironov.image.studio.api.dto.IdDto;
 import com.mironov.image.studio.api.dto.MasterServiceDto;
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.IMasterServicesService;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -39,10 +38,9 @@ public class AdminMasterServiceController {
         return "admin/services";
     }
 
-    @DeleteMapping
-    @RequestMapping("/{idService}")
-    public String deleteService(@PathVariable(name = "idService") Long idService) {
-        this.masterServicesService.deleteService(idService);
+    @PostMapping("/delete")
+    public String deleteService(@ModelAttribute(name = "id") IdDto id) {
+        this.masterServicesService.deleteService(id.getId());
         return "redirect:/admin/services";
     }
 

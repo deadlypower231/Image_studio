@@ -12,11 +12,13 @@ public abstract class Schedule_ extends com.mironov.image.studio.entities.AEntit
 
 	public static volatile SingularAttribute<Schedule, String> time;
 	public static volatile SingularAttribute<Schedule, Tournament> tournament;
+	public static volatile SingularAttribute<Schedule, User> user;
 	public static volatile ListAttribute<Schedule, Order> order;
 	public static volatile SingularAttribute<Schedule, Status> status;
 
 	public static final String TIME = "time";
 	public static final String TOURNAMENT = "tournament";
+	public static final String USER = "user";
 	public static final String ORDER = "order";
 	public static final String STATUS = "status";
 

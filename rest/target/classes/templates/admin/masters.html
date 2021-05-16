@@ -155,7 +155,7 @@
                                         style="color:black;"></h6>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#" th:action="'/admin/masters/delete'" th:object="${serviceIds}" th:method="delete">
+                                    <form action="#" th:action="'/admin/masters/delete'" th:object="${serviceIds}" th:method="post">
                                         <div th:each="service : ${master.masterServices}">
                                             <input type="checkbox" th:field="*{ids}" th:value="${service.id}" th:text="${service.name}">
                                         </div>

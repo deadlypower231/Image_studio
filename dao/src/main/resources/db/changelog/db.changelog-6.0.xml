@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet context="legacy" author="evgeniymironov" id="changelog-6.0">
+		<sql endDelimiter="/">
+			CREATE TRIGGER add_submit_date_to_my_table BEFORE UPDATE
+			ON test1.order FOR EACH ROW
+			if new.submit_date is null then
+			set new.submit_date = current_timestamp();
+			end if;
+			/
+		</sql>
+	</changeSet>
+</databaseChangeLog> 

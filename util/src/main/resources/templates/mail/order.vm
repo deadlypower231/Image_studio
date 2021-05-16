@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <pre>
+        Здравствуйте ${firstName} ${lastName},
+        мы успешно приняли ваш заказ на турнир ${tournamentName}, который пройдет по адресу ${tournamentAddress} ${tournamentDate}
+        С вами будет работать ${firstNameMaster} ${lastNameMaster}.
+        Время: ${tournamentTime}
+        Услуга: ${service}
+        Цена: ${price}
+        Спасибо что выбрали нас!
+        </pre>
+    </body>
+</html>

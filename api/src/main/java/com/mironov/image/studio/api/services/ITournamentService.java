@@ -1,8 +1,10 @@
 package com.mironov.image.studio.api.services;
 
 import com.mironov.image.studio.api.dto.IdUsersDto;
+import com.mironov.image.studio.api.dto.OrderForMasterDto;
 import com.mironov.image.studio.api.dto.TimeDto;
 import com.mironov.image.studio.api.dto.TournamentDto;
+import com.mironov.image.studio.enums.Status;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public interface ITournamentService {
 
     List<TournamentDto> getAll();
+
+    List<TournamentDto> getAllIsActive();
 
     TournamentDto get(long id);
 
@@ -21,6 +25,6 @@ public interface ITournamentService {
 
     void deleteById(long id);
 
-    List<TournamentDto> getTournamentsWithMaster(long id);
+    List<OrderForMasterDto> getTournamentsWithMaster(long id, Status status);
 
 }

@@ -4,98 +4,22 @@
 .head-color {
     background-color: #38a0b0;
 }
+.bg-color-black{
+    background-color: #010203;
+}
+.pagination {
+	display: inline-block;
+}
 
-
-.px-5{
-	padding-right:10rem!important;
-	padding-left:10rem!important
-}
-.user-wrapper {
-	background-color: white;
-	/* width: 450px; */
-	 height: 50px;
-	/* border: 1px solid black; */
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-}
-.user-button {
-	position: absolute;
-	transform: scale(1);
-	transform-style: flat;
-}
-.user-button-login {
-	position: absolute;
-	right: 110px;
-	top: 10px;
-}
-.user-button-registration {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-}
-.user-body {
-	margin-left: 200px;
-
-	margin-right: 200px;
-	margin-top: 20px;
-	background-color: #0dcaf0;
-}
-.user-h1 {
+.pagination a {
 	color: black;
-	text-align-last: left;
-	/* background: white; */
-	position: absolute;
-	left: 350px;
-}
-.user-h2 {
-	text-align-last: right;
-	color: black;
-	position: absolute;
-	right: 350px;
-}
-.user-p {
-	margin: 5px;
-	padding: 10px;
-	color: #232F34;
-	text-align-last: left;
-	background: gainsboro;
-
+	float: left;
+	padding: 5px 5px;
+	text-decoration: none;
 }
 
-.user-div {
-
-	/*width: 200px;*/
-	/*height: 140px;*/
-	/*padding-left: 10px;*/
-}
-.user-div-main {
-	width: auto;
-	height: 43px;
-	background-color: #344955;
-}
-
-.user-form{
-
-}
-
-.user-div:hover {
-	transform: scale(1.05);
-	transform-style: flat;
+.pagination a.active {
 	background-color: gray;
-}
-.user-div-wrapper{
-	margin-bottom: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top: 20px;
-}
-
-.body {
-  background-color: teal;
-  color: white;
-}
-
-.body1 {
-    background-color: blue;
+	color: white;
+	border-radius: 2px;
 }

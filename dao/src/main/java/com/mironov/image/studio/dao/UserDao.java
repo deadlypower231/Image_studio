@@ -11,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 @Repository
 @Transactional(readOnly = true)
@@ -22,7 +25,7 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
     }
 
     @Override
-    public boolean checkUserByName(String name) throws NoResultException{
+    public boolean checkUserByName(String name) throws NoResultException {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
@@ -30,29 +33,39 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
                 .select(root)
                 .where(criteriaBuilder.equal(root.get(User_.USERNAME), name));
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
-        return q.getSingleResult()!=null;
+        return q.getSingleResult() != null;
     }
 
     @Override
-    public User getByName(String name) throws NoResultException{
+    public boolean checkUserByEmail(String email) throws NoResultException {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
-        criteriaQuery
-                .select(root)
-                .where(criteriaBuilder.equal(root.get(User_.USERNAME), name));
+        criteriaQuery.select(root)
+                .where(criteriaBuilder.equal(root.get(User_.EMAIL), email));
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
-        return q.getSingleResult();
+        return q.getSingleResult() != null;
     }
 
     @Override
-    public User getByNumberPhone(long phone) throws NoResultException{
+    public boolean checkUserByPhone(long phone) throws NoResultException {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
-        criteriaQuery
-                .select(root)
+        criteriaQuery.select(root)
                 .where(criteriaBuilder.equal(root.get(User_.PHONE), phone));
+        TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
+        return q.getSingleResult() != null;
+    }
+
+    @Override
+    public User getByName(String name) throws NoResultException {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+        criteriaQuery
+                .select(root)
+                .where(criteriaBuilder.equal(root.get(User_.USERNAME), name));
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
         return q.getSingleResult();
     }
@@ -90,15 +103,15 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
     @Override
     public Set<User> searchMasters(List<String> strings) {
         Set<User> result = new HashSet<>();
-        for (int i = 0; i < strings.size(); i++) {
+        for (String s: strings) {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
             Root<User> users = criteriaQuery.from(User.class);
             Join<User, Role> roles = users.join(User_.ROLES);
             Predicate predicate = criteriaBuilder.or(
-                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.firstName)), "%" + strings.get(i).toLowerCase(Locale.ROOT) + "%"),
-                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.lastName)), "%" + strings.get(i).toLowerCase(Locale.ROOT) + "%"),
-                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.username)), "%" + strings.get(i).toLowerCase(Locale.ROOT) + "%"));
+                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.firstName)), "%" + s.toLowerCase(Locale.ROOT) + "%"),
+                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.lastName)), "%" + s.toLowerCase(Locale.ROOT) + "%"),
+                    criteriaBuilder.like(criteriaBuilder.lower(users.get(User_.username)), "%" + s.toLowerCase(Locale.ROOT) + "%"));
             Predicate resultPredicate = criteriaBuilder.and(
                     predicate,
                     criteriaBuilder.equal(roles.get(Role_.ROLE_NAME), "ROLE_MASTER"));
@@ -118,7 +131,7 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
         Root<User> users = criteriaQuery.from(User.class);
         criteriaQuery
                 .select(users)
-                .where(criteriaBuilder.equal(users.get(User_.EMAIL),email));
+                .where(criteriaBuilder.equal(users.get(User_.EMAIL), email));
         TypedQuery<User> q = entityManager.createQuery(criteriaQuery);
         return q.getSingleResult();
     }

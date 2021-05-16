@@ -13,6 +13,7 @@ C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\c
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\utils\IEmailSender.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\OrderDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\mappers\ScheduleMapper.java
+C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\SendMessageDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\mappers\UserMapper.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\DescriptionDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\services\IUserService.java
@@ -38,6 +39,7 @@ C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\c
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\CurrentUserDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\UserUpdateDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\UserRolesDto.java
+C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\dto\OrderForMasterDto.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\services\ITournamentService.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\services\IActivationService.java
 C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\api\src\main\java\com\mironov\image\studio\api\services\IOrderService.java

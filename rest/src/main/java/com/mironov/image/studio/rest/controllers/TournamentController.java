@@ -35,8 +35,7 @@ public class TournamentController {
         return TOURNAMENTS;
     }
 
-    @GetMapping
-    @RequestMapping("/moreInfo/{id}")
+    @GetMapping("/moreInfo/{id}")
     public String getTournament(@PathVariable(name = "id") long id, Model model) {
         model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
         model.addAttribute(TOURNAMENT, this.tournamentService.get(id));

@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import java.util.List;
 public class User extends AEntity<Long> implements Serializable {
 
     @Column(name = "username", unique = true, length = 15, nullable = false)
-    @NotBlank(message = "Не должно быть пустым")
     private String username;
     @Column(name = "firstName", length = 15)
     private String firstName;
@@ -58,10 +56,12 @@ public class User extends AEntity<Long> implements Serializable {
     private List<Order> order;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MasterService> masterServices;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_schedule", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "schedule_id", referencedColumnName = "id"))
     private List<Schedule> schedules;
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Schedule> schedule;
 
 
     public List<Role> getRoles() {

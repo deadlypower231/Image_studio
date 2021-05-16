@@ -1,6 +1,7 @@
 package com.mironov.image.studio.api.dto;
 
 import com.mironov.image.studio.entities.User;
+import com.mironov.image.studio.enums.Status;
 import lombok.*;
 
 @Getter
@@ -12,6 +13,7 @@ public class ScheduleDto {
 
     private long id;
     private String time;
-    private User user;
+    private UserDto user;
+    private Status status;
 
 }

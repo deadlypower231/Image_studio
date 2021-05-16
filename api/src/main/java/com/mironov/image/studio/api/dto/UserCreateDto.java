@@ -40,7 +40,7 @@ public class UserCreateDto {
     private String lastName;
     private List<RoleDto> roles;
     private Status status;
-    private OffsetDateTime createdDate;
+//    private OffsetDateTime createdDate;
 
     public List<RoleDto> getRoles() {
         if (roles == null){

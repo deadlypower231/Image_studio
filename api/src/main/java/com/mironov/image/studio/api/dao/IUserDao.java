@@ -2,17 +2,18 @@ package com.mironov.image.studio.api.dao;
 
 import com.mironov.image.studio.entities.User;
 
-import javax.persistence.NoResultException;
 import java.util.List;
 import java.util.Set;
 
 public interface IUserDao extends IAGenericDao<User> {
 
-    boolean checkUserByName(String name) throws NoResultException;
+    boolean checkUserByName(String name);
+
+    boolean checkUserByEmail(String email);
+
+    boolean checkUserByPhone(long phone);
 
     User getByName(String name);
-
-    User getByNumberPhone(long phone);
 
     User getUserByEmail(String email);
 

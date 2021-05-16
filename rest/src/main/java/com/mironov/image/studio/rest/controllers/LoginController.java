@@ -29,8 +29,7 @@ public class LoginController {
 
     //todo make redirect to login page
 
-    @PostMapping
-    @RequestMapping("/forgotPassword")
+    @PostMapping("/forgotPassword")
     public String sendNewPasswordToUser(@ModelAttribute("email") @Valid EmailDto email, BindingResult bindingResult, Model model) {
         if (!this.userService.createNewPassword(email)) {
             bindingResult.rejectValue("email", "email", "Эта электронная почта не найдена!");
@@ -38,7 +37,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             return "signup/forgotPassword";
         }
-        return "signup/login";
+        return "redirect:/login";
 
     }
 

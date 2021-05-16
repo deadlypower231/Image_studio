@@ -16,6 +16,7 @@ public abstract class User_ extends com.mironov.image.studio.entities.AEntity_ {
 	public static volatile ListAttribute<User, Role> roles;
 	public static volatile SingularAttribute<User, Description> description;
 	public static volatile SingularAttribute<User, String> firstName;
+	public static volatile ListAttribute<User, Schedule> schedule;
 	public static volatile SingularAttribute<User, String> password;
 	public static volatile SingularAttribute<User, OffsetDateTime> createdDate;
 	public static volatile SingularAttribute<User, Long> phone;
@@ -32,6 +33,7 @@ public abstract class User_ extends com.mironov.image.studio.entities.AEntity_ {
 	public static final String ROLES = "roles";
 	public static final String DESCRIPTION = "description";
 	public static final String FIRST_NAME = "firstName";
+	public static final String SCHEDULE = "schedule";
 	public static final String PASSWORD = "password";
 	public static final String CREATED_DATE = "createdDate";
 	public static final String PHONE = "phone";

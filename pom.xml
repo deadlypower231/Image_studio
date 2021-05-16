@@ -37,6 +37,9 @@
         <spring-boot-starter-mail.version>2.4.2</spring-boot-starter-mail.version>
         <spring-boot-starter-velocity.version>1.4.7.RELEASE</spring-boot-starter-velocity.version>
         <jpamodelgen.version>5.4.31.Final</jpamodelgen.version>
+        <awaitility.version>4.0.3</awaitility.version>
+        <spring-boot-starter-test.version>2.4.2</spring-boot-starter-test.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencyManagement>
@@ -93,10 +96,6 @@
                 <version>${thymeleaf-extras-springsecurity5.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-mail</artifactId>
                 <version>${spring-boot-starter-mail.version}</version>
@@ -106,7 +105,26 @@
                 <artifactId>spring-boot-starter-velocity</artifactId>
                 <version>${spring-boot-starter-velocity.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.awaitility</groupId>
+                <artifactId>awaitility</artifactId>
+                <version>${awaitility.version}</version>
+                <scope>test</scope>
+            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot-starter-test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
         </dependencies>
     </dependencyManagement>
+
 
 </project>

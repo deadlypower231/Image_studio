@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <pre>
+        ${source}
+
+        Image Studio, мастер ${firstName} ${lastName}
+        </pre>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 package com.mironov.image.studio.entities;
 
+import com.mironov.image.studio.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,9 @@ public class Order extends AEntity<Long> implements Serializable {
     private double price;
     @Column(name = "submit_date")
     private OffsetDateTime submitDate;
+    @Column(name = "status")
+    private Status status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;

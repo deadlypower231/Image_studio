@@ -4,8 +4,10 @@ import com.mironov.image.studio.api.dao.IScheduleDao;
 import com.mironov.image.studio.api.dao.ITournamentDao;
 import com.mironov.image.studio.api.dao.IUserDao;
 import com.mironov.image.studio.api.dto.IdUsersDto;
+import com.mironov.image.studio.api.dto.OrderForMasterDto;
 import com.mironov.image.studio.api.dto.TimeDto;
 import com.mironov.image.studio.api.dto.TournamentDto;
+import com.mironov.image.studio.api.mappers.ScheduleMapper;
 import com.mironov.image.studio.api.mappers.TournamentMapper;
 import com.mironov.image.studio.api.services.ITournamentService;
 import com.mironov.image.studio.entities.Schedule;
@@ -49,6 +51,7 @@ public class TournamentService implements ITournamentService {
 
     @Transactional
     public void saveTournament(TournamentDto tournamentDto, MultipartFile file) {
+        tournamentDto.setStatus(Status.ACTIVE);
         Tournament savedTournament = this.tournamentDao.create(TournamentMapper.mapTournamentCreate(tournamentDto));
         try {
             if (file.isEmpty()) {
@@ -87,10 +90,25 @@ public class TournamentService implements ITournamentService {
         Schedule savedSchedule = this.scheduleDao.create(schedule);
         User user = this.userDao.get(idMaster);
         user.getSchedules().add(savedSchedule);
+        this.userDao.update(user);
     }
 
     @Override
-    public List<TournamentDto> getTournamentsWithMaster(long id) {
-        return TournamentMapper.mapTournamentsDto(this.tournamentDao.getTournamentWithMaster(id));
+    public List<OrderForMasterDto> getTournamentsWithMaster(long id, Status status) {
+        List<OrderForMasterDto> orderForMasterDtos = new ArrayList<>();
+        List<TournamentDto> tournaments = TournamentMapper.mapTournamentsDto(this.tournamentDao.getTournamentWithMasterIsActive(id, status));
+        for (TournamentDto x: tournaments) {
+            OrderForMasterDto orderForMasterDto = new OrderForMasterDto();
+            orderForMasterDto.setTournament(x);
+            orderForMasterDto.setSchedules(ScheduleMapper.mapSchedulesDto(this.scheduleDao.getSchedulesByIdTournamentIdMaster(x.getId(), id)));
+            orderForMasterDtos.add(orderForMasterDto);
+        }
+        return orderForMasterDtos;
     }
+
+    @Override
+    public List<TournamentDto> getAllIsActive() {
+        return TournamentMapper.mapTournamentsDto(this.tournamentDao.getAllIsActive());
+    }
+
 }

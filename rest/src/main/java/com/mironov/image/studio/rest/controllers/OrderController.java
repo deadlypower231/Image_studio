@@ -1,7 +1,6 @@
 package com.mironov.image.studio.rest.controllers;
 
 import com.mironov.image.studio.api.dto.IdDataOrderDto;
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,20 +39,18 @@ public class OrderController {
     @GetMapping
     public String orderPage(Model model) {
         model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
-        model.addAttribute(TOURNAMENTS, this.tournamentService.getAll());
+        model.addAttribute(TOURNAMENTS, this.tournamentService.getAllIsActive());
         return ORDERS;
     }
 
-    @GetMapping
-    @RequestMapping("/{idTournament}")
+    @GetMapping("/{idTournament}")
     public String orderTournamentPage(@PathVariable(name = "idTournament") long idTournament, Model model) {
         model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
         model.addAttribute(TOURNAMENT, this.tournamentService.get(idTournament));
         return "ordersTournament";
     }
 
-    @GetMapping
-    @RequestMapping("/{idTournament}/{idMaster}")
+    @GetMapping("/{idTournament}/{idMaster}")
     public String orderTournamentMasterPage(@PathVariable(name = "idTournament") long idTournament,
                                             @PathVariable(name = "idMaster") long idMaster,
                                             Model model) {
@@ -65,10 +62,9 @@ public class OrderController {
         return "ordersTournamentSchedules";
     }
 
-    @PostMapping
-    @RequestMapping("/registration")
+    @PostMapping("/registration")
     public String createOrder(@ModelAttribute(ORDER) @Valid IdDataOrderDto idDataOrderDto, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             model.addAttribute(CURRENT_USER, this.securityService.findLoggedInUser());
             model.addAttribute(TOURNAMENT, this.tournamentService.get(idDataOrderDto.getIdTournament()));
             model.addAttribute(MASTER, this.userService.getUser(idDataOrderDto.getIdMaster()));

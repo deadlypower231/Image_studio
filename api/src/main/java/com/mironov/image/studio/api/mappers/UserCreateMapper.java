@@ -24,7 +24,7 @@ public class UserCreateMapper {
                 .email(source.getEmail())
                 .status(source.getStatus())
                 .password(source.getPassword())
-                .createdDate(source.getCreatedDate())
+//                .createdDate(source.getCreatedDate())
                 .roles(source.getRoles().stream().map(UserCreateMapper::mapRoleDto).collect(Collectors.toList()))
                 .build();
     }
@@ -39,7 +39,7 @@ public class UserCreateMapper {
                 .email(source.getEmail())
                 .password(source.getPassword())
                 .status(source.getStatus())
-                .createdDate(source.getCreatedDate())
+//                .createdDate(source.getCreatedDate())
                 .roles(source.getRoles().stream().map(UserCreateMapper::mapRole).collect(Collectors.toList()))
                 .build();
     }
@@ -53,7 +53,7 @@ public class UserCreateMapper {
                 .email(source.getEmail())
                 .password(source.getPassword())
                 .status(source.getStatus())
-                .createdDate(source.getCreatedDate())
+//                .createdDate(source.getCreatedDate())
                 .build();
     }
 

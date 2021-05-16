@@ -22,6 +22,7 @@ public class Description extends AEntity<Long> implements Serializable {
     private String shortDescription;
     @Column(name = "full_description", length = 1000)
     private String fullDescription;
+
     @OneToOne(mappedBy = "description", fetch = FetchType.LAZY)
     private User user;
     @OneToOne(mappedBy = "description", fetch = FetchType.LAZY)

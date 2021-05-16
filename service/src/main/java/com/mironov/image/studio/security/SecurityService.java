@@ -39,7 +39,6 @@ public class SecurityService implements ISecurityService {
     public CurrentUserDto findLoggedInUser() {
         if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
             User user = this.userDao.getByName(SecurityContextHolder.getContext().getAuthentication().getName());
-//            user.setLastActivity(OffsetDateTime.now());
             this.userDao.update(user);
             return CurrentUserMapper.mapDto(user);
         }

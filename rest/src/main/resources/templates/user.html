@@ -1,0 +1,104 @@
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Image Studio</title>
+    <link href="../styles/styles.css" rel="stylesheet"/>
+    <link href="../styles/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/popper.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-color">
+<div class="d-flex justify-content-end p-sm-3 head-color" style="height : 4.5rem;">
+    <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false"
+           th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <div sec:authorize="hasRole('ADMIN')">
+                <a class="dropdown-item" href="/admin/users">Страница администратора</a>
+            </div>
+            <div sec:authorize="hasRole('MASTER')">
+                <a class="dropdown-item" href="/master/tournaments">Мои турниры</a>
+            </div>
+            <a class="dropdown-item" href="/orders">Мои заказы</a>
+            <a class="dropdown-item" href="/settings">Настройки</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item " href="/logout">Выйти</a>
+        </div>
+    </div>
+    <div sec:authorize="isAnonymous()" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="/login"/>
+        <button class="btn btn-info" type="button">Войти</button>
+        </a>
+        <a href="/signup"/>
+        <button class="btn btn-info" type="button">Регистрация</button>
+        </a>
+    </div>
+</div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/">Главная страница</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Турниры</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/masters">Мастера</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/order">Запись на турнир</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">О нас</a>
+    </li>
+</ul>
+<div class="card mb-3" style="max-width: 100rem ;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img  th:src="'../../images/' + @{${user.username}} + '.jpg'" style="max-width: 30rem;" >
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${user.firstName} + ' ' +${user.lastName}"></h5>
+
+                <p class="card-text" th:text="${user.email}"></p>
+                <button type="button" class="btn btn-successful btn-sm"
+                        data-toggle="modal" th:attr="data-target='#sendMessageModal' + ${user.id}">Написать письмо
+                </button>
+                <div th:id="'sendMessageModal' + ${user.id}" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" th:text="'Написать письмо:'"
+                                    style="color:black;"></h6>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/users/sendMessage" th:object="${sendMessage}" th:method="post">
+                                    <input type="hidden" name="email" th:value="${user.email}">
+                                    <input type="hidden" name="id" th:value="${user.id}">
+                                    <textarea class="form-control mx-sm-2" placeholder="Введите сообщение."
+                                              rows="3"
+                                              th:field="*{text}"></textarea>
+                                    <div class="btn-group">
+                                        <input type="submit" value="Отправить" class="btn btn-danger ">
+                                        <button type="button" class="btn btn-secondary beta" data-dismiss="modal">Отмена
+                                        </button>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="card-text"><small class="text-muted" th:text="${user.phone}"></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

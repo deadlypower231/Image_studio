@@ -18,8 +18,7 @@ public class ActivationController {
         this.activationService = activationService;
     }
 
-    @GetMapping
-    @RequestMapping("/{activation}")
+    @GetMapping("/{activation}")
     public String activation(@PathVariable(name = "activation") String activation, Model model) {
         UserCreateDto user = this.activationService.activationUser(activation);
         if (user == null) {

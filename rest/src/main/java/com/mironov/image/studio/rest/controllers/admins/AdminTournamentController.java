@@ -59,8 +59,7 @@ public class AdminTournamentController {
         return "admin/tournamentsDelete";
     }
 
-    @DeleteMapping
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public String deleteTournamentById(@ModelAttribute("id") IdDto id) {
         this.tournamentService.deleteById(id.getId());
         return "redirect:/admin/tournaments/delete";
@@ -80,8 +79,7 @@ public class AdminTournamentController {
         return "redirect:/admin/tournaments";
     }
 
-    @PostMapping
-    @RequestMapping(value = "/schedule/{idTournament}/{idMaster}")
+    @PostMapping("/schedule/{idTournament}/{idMaster}")
     public String saveAddScheduleToMasterWithTournament(@ModelAttribute(TIME) TimeDto timeDto,
                                                         @PathVariable(name = "idTournament") long idTournament,
                                                         @PathVariable(name = "idMaster") long idMaster) {
@@ -89,8 +87,7 @@ public class AdminTournamentController {
         return String.format("redirect:/admin/tournaments/%d/%d", idTournament, idMaster);
     }
 
-    @GetMapping
-    @RequestMapping(value = "/{idTournament}/{idMaster}")
+    @GetMapping("/{idTournament}/{idMaster}")
     public String getTournamentWithMaster(Model model,
                                           @PathVariable(name = "idTournament") long idTournament,
                                           @PathVariable(name = "idMaster") long idMaster) {
@@ -100,18 +97,15 @@ public class AdminTournamentController {
         model.addAttribute(SCHEDULES, this.scheduleService.getSchedulesByIdTournamentIdMaster(idTournament, idMaster));
         model.addAttribute(TIME, new TimeDto());
         model.addAttribute("id", new IdDto());
-
         return "admin/tournamentsSchedule";
     }
 
-    @DeleteMapping
-    @RequestMapping(value = "/schedule/delete/{idTournament}/{idMaster}")
+    @PostMapping("/schedule/delete/{idTournament}/{idMaster}")
     public String deleteSchedule(@ModelAttribute("id")IdDto id,
                                  @PathVariable(name = "idTournament") long idTournament,
                                  @PathVariable(name = "idMaster") long idMaster) {
         this.scheduleService.deleteById(id.getId());
         return String.format("redirect:/admin/tournaments/%d/%d", idTournament, idMaster);
     }
-
 
 }

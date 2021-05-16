@@ -29,4 +29,5 @@ public class MasterService extends AEntity<Long> implements Serializable {
     private User user;
     @OneToMany(mappedBy = "masterService", fetch = FetchType.LAZY)
     private List<Order> order;
+
 }

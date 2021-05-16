@@ -68,8 +68,9 @@
                     </div>
                     <div class="modal-body">
                         <p style="color:red;">Вы уверены что хотите удалить?</p>
-                        <form action="#" th:action="'/admin/services/' + @{${masterService.id}}" th:method="delete">
+                        <form action="#" th:action="'/admin/services/delete'" th:object="${id}" th:method="post">
                             <div class="btn-group">
+                                <input type="hidden" name="id" th:value="${masterService.id}">
                                 <input type="submit" value="Удалить" class="btn btn-danger ">
                                 <button type="button" class="btn btn-secondary beta" data-dismiss="modal">Отмена
                                 </button>

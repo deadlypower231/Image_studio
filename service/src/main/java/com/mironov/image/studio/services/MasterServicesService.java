@@ -49,8 +49,8 @@ public class MasterServicesService implements IMasterServicesService {
     @Transactional
     public void deleteServices(ServiceIdsDto serviceIdsDto) {
         List<MasterService> services = serviceIdsDto.getIds().stream().map(this.masterServiceDao::get).collect(Collectors.toList());
-        for (int i = 0; i < services.size(); i++) {
-            this.masterServiceDao.delete(services.get(i));
+        for (MasterService s : services) {
+            this.masterServiceDao.delete(s);
         }
     }
 

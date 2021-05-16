@@ -23,9 +23,12 @@ public class Schedule extends AEntity<Long> implements Serializable {
     @Column(name = "time")
     private String time;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournament_id", referencedColumnName = "id")
     private Tournament tournament;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
     private List<Order> order;
     @Column(name = "status")

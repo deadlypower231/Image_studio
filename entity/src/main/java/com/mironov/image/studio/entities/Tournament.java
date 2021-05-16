@@ -1,5 +1,6 @@
 package com.mironov.image.studio.entities;
 
+import com.mironov.image.studio.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,12 +20,14 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 public class Tournament extends AEntity<Long> implements Serializable {
-    @Column(name = "name",length = 100)
+    @Column(name = "name", length = 100)
     private String name;
-    @Column(name = "date", length = 20)
-    private String date;
+    @Column(name = "date", length = 21)
+    private Date date;
     @Column(name = "address")
     private String address;
+    @Column(name = "status")
+    private Status status;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "description_id", referencedColumnName = "id")

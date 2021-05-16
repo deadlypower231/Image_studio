@@ -53,11 +53,11 @@
     </li>
 </ul>
 <div th:each="tournament : ${tournaments}">
-    <h1 th:text="'Название ' + ${tournament.name}"></h1>
-    <h1 th:text="'Дата ' + ${tournament.date}"></h1>
-    <h1 th:text="'Короткое описание ' + ${tournament.description.shortDescription}"></h1>
-    <h1 th:text="'Полное описание ' + ${tournament.description.fullDescription}"></h1>
-    <h1 th:text="'Адрес ' + ${tournament.address}"></h1>
+    <h6 th:text="'Название ' + ${tournament.name}"></h6>
+    <h6 th:text="'Дата ' + ${tournament.date}"></h6>
+    <h6 th:text="'Короткое описание ' + ${tournament.description.shortDescription}"></h6>
+    <h6 th:text="'Полное описание ' + ${tournament.description.fullDescription}"></h6>
+    <h6 th:text="'Адрес ' + ${tournament.address}"></h6>
     <p>Заявленые мастера:</p>
     <div th:each="master : ${tournament.users}">
         <div class="btn-group">

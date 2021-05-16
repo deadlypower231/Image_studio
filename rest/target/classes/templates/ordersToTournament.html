@@ -1,5 +1,5 @@
-<html   xmlns:th="http://thymeleaf.org"
-        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Image Studio</title>
     <link href="../styles/styles.css" rel="stylesheet"/>
@@ -10,10 +10,11 @@
 </head>
 
 <body class="bg-color">
-<div class="d-flex justify-content-end p-sm-3 head-color"  style="height : 4.5rem;">
+<div class="d-flex justify-content-end p-sm-3 head-color" style="height : 4.5rem;">
     <div class="dropdown show" sec:authorize="hasAnyRole('USER', 'ADMIN', 'MASTER')">
         <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false" th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
+           aria-haspopup="true" aria-expanded="false"
+           th:text="${currentUser.firstName} + ' ' + ${currentUser.lastName}">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
             <div sec:authorize="hasRole('ADMIN')">
@@ -55,20 +56,71 @@
     </li>
 </ul>
 
-<h3>Активные турниры:</h3>
-<div class="card text-white" style="max-width: 18rem;">
-    <div class="card text-white bg-success" style="max-width: 18rem;">
-        <div th:each="tournament : ${tournaments}">
-        <div class="card-header" th:text="${tournament.name}"></div>
-        <div class="card-body">
-<!--            <h5 class="card-title" th:text="${order.master.firstName} + ' ' + ${order.master.lastName}"></h5>-->
-<!--            <p class="card-text" th:text="'Время: ' + ${order.scheduleDto.time}"></p>-->
-<!--            <p class="card-text" th:text="'Услуга: ' + ${order.masterServiceDto.name}"></p>-->
-<!--            <p class="card-text" th:text="'Цена: ' + ${order.scheduleDto.time}"></p>-->
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="card" style="max-width: 45rem;">
+        <h3>Активные турниры:</h3>
+        <div class="card">
+            <div class="col" th:each="order : ${ordersForTournament}">
+                <dl class="row padding-5">
+                    <dt class="col-sm-3">Название турнира:</dt>
+                    <dd class="col-sm-9"><a th:href="'/tournaments/moreInfo/' + ${order.tournament.id}" th:text="${order.tournament.name}"></a></dd>
+                    <dt class="col-sm-3">Адрес:</dt>
+                    <dd class="col-sm-9" th:text="${order.tournament.address}"></dd>
+                    <dt class="col-sm-3">Дата:</dt>
+                    <dd class="col-sm-9" th:text="${order.tournament.date}"></dd>
+                    <dt class="col-sm-3">Расписание:</dt>
+                    <dd class="col-sm-9">
+                        <dl class="row">
+                            <dt class="col-sm-4">Время:</dt>
+                            <dd class="col-sm-8">
+                            </dd>
+                        </dl>
+                        <dl class="row" th:each="schedule:${order.schedules}">
+                            <dt class="col-sm-1"></dt>
+                            <div class="btn-group">
+                                <dd class="col-sm-2"></dd>
+                                <a th:href="'/users/' + ${schedule.user.id}">
+                                    <p th:text="${schedule.time}"></p>
+                                </a>
+                            </div>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
         </div>
+    </div>
+    <div class="card text-secondary" style="max-width: 45rem;">
+        <h3>Проведенные турниры:</h3>
+        <div class="card">
+            <div class="col" th:each="order : ${ordersForTournamentArchive}">
+                <dl class="row">
+                    <dt class="col-sm-3">Название турнира:</dt>
+                    <dd class="col-sm-9"><a th:href="'/tournaments/moreInfo/' + ${order.tournament.id}" th:text="${order.tournament.name}"></a></dd>
+                    <dt class="col-sm-3">Адрес:</dt>
+                    <dd class="col-sm-9" th:text="${order.tournament.address}"></dd>
+                    <dt class="col-sm-3">Дата:</dt>
+                    <dd class="col-sm-9" th:text="${order.tournament.date}"></dd>
+                    <dt class="col-sm-3">Расписание:</dt>
+                    <dd class="col-sm-9">
+                        <dl class="row">
+                            <dt class="col-sm-4">Время:</dt>
+                            <dd class="col-sm-8">
+                            </dd>
+                        </dl>
+                        <dl class="row" th:each="schedule:${order.schedules}">
+                            <dt class="col-sm-1"></dt>
+                            <div class="btn-group">
+                                <dd class="col-sm-2"></dd>
+                                <a th:href="'/users/' + ${schedule.user.id}">
+                                    <p th:text="${schedule.time}"></p>
+                                </a>
+                            </div>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
