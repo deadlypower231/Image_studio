@@ -1,10 +1,7 @@
 package com.mironov.image.studio.rest.controllers.admins;
 
 import com.mironov.image.studio.api.dto.*;
-import com.mironov.image.studio.api.services.IScheduleService;
-import com.mironov.image.studio.api.services.ISecurityService;
-import com.mironov.image.studio.api.services.ITournamentService;
-import com.mironov.image.studio.api.services.IUserService;
+import com.mironov.image.studio.api.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/admin/tournaments")
 public class AdminTournamentController {
 
+    private static final String REDIRECT_ADMIN_TOURNAMENTS = "redirect:/admin/tournaments";
     private static final String CURRENT_USER = "currentUser";
     private static final String TOURNAMENTS = "tournaments";
     private static final String TOURNAMENT = "tournament";
@@ -26,12 +24,14 @@ public class AdminTournamentController {
     private final ISecurityService securityService;
     private final IScheduleService scheduleService;
     private final ITournamentService tournamentService;
+    private final IScheduleTask scheduleTask;
 
-    public AdminTournamentController(IUserService userService, ISecurityService securityService, IScheduleService scheduleService, ITournamentService tournamentService) {
+    public AdminTournamentController(IUserService userService, ISecurityService securityService, IScheduleService scheduleService, ITournamentService tournamentService, IScheduleTask scheduleTask) {
         this.userService = userService;
         this.securityService = securityService;
         this.scheduleService = scheduleService;
         this.tournamentService = tournamentService;
+        this.scheduleTask = scheduleTask;
     }
 
     @GetMapping
@@ -70,13 +70,13 @@ public class AdminTournamentController {
                                  @RequestParam(value = "file", required = false)
                                          MultipartFile file) {
         this.tournamentService.saveTournament(tournament, file);
-        return "redirect:/admin/tournaments";
+        return REDIRECT_ADMIN_TOURNAMENTS;
     }
 
     @PostMapping
     public String saveAddMastersToTournament(@ModelAttribute("idUsers") IdUsersDto idUsersDto) {
         this.tournamentService.addMastersToTournament(idUsersDto.getId(), idUsersDto);
-        return "redirect:/admin/tournaments";
+        return REDIRECT_ADMIN_TOURNAMENTS;
     }
 
     @PostMapping("/schedule/{idTournament}/{idMaster}")
@@ -106,6 +106,12 @@ public class AdminTournamentController {
                                  @PathVariable(name = "idMaster") long idMaster) {
         this.scheduleService.deleteById(id.getId());
         return String.format("redirect:/admin/tournaments/%d/%d", idTournament, idMaster);
+    }
+
+    @GetMapping("/update")
+    public String updateDate() {
+        this.scheduleTask.checkTournamentDate();
+        return REDIRECT_ADMIN_TOURNAMENTS;
     }
 
 }

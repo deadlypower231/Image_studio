@@ -10,8 +10,8 @@ import com.mironov.image.studio.api.services.IMasterServicesService;
 import com.mironov.image.studio.entities.MasterService;
 import com.mironov.image.studio.entities.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 

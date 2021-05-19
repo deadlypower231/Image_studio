@@ -11,7 +11,7 @@ public interface IUserDao extends IAGenericDao<User> {
 
     boolean checkUserByEmail(String email);
 
-    boolean checkUserByPhone(long phone);
+    boolean checkUserByPhone(String phone);
 
     User getByName(String name);
 

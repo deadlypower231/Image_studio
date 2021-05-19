@@ -4,7 +4,6 @@ import com.mironov.image.studio.api.dto.IdDto;
 import com.mironov.image.studio.api.dto.MasterServiceDto;
 import com.mironov.image.studio.api.services.IMasterServicesService;
 import com.mironov.image.studio.api.services.ISecurityService;
-import com.mironov.image.studio.api.services.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +19,10 @@ public class AdminMasterServiceController {
     private static final String SERVICES = "services";
     private static final String SERVICE = "service";
 
-    private final IUserService userService;
     private final ISecurityService securityService;
     private final IMasterServicesService masterServicesService;
 
-    public AdminMasterServiceController(IUserService userService, ISecurityService securityService, IMasterServicesService masterServicesService) {
-        this.userService = userService;
+    public AdminMasterServiceController(ISecurityService securityService, IMasterServicesService masterServicesService) {
         this.securityService = securityService;
         this.masterServicesService = masterServicesService;
     }

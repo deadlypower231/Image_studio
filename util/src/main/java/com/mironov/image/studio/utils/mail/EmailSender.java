@@ -26,6 +26,7 @@ public class EmailSender implements IEmailSender {
     private static final String UTF_8 = "UTF-8";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
+    private static final String FAILED_CONFIGURE_MESSAGE = "Failed configure message {}";
 
     private final VelocityEngine velocityEngine;
     private final JavaMailSender mailSender;
@@ -39,35 +40,54 @@ public class EmailSender implements IEmailSender {
 
     @Async
     @Override
-    public void sendEmailFromAdmin(User user, String encoding) throws Exception {
+    public void sendEmailFromAdmin(User user, String encoding) {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, UTF_8);
         String text = prepareActivateRequestEmail(user, encoding);
         String subject = "Активация аккаунта " + user.getUsername() + ".";
-        configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
-        mailSender.send(message);
+        try {
+            configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
+            mailSender.send(message);
+        }catch (MailException e){
+            log.error("Failed to send message to mail {}", user.getEmail());
+        }catch (MessagingException e){
+            log.error(FAILED_CONFIGURE_MESSAGE, e.getMessage());
+        }
     }
 
     @Async
     @Override
-    public void sendEmailFromAdminByOrder(User user, Order order) throws Exception {
+    public void sendEmailFromAdminByOrder(User user, Order order) {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, UTF_8);
         String text = prepareCreateOrderRequestEmail(user, order);
         String subject = "Ваш заказ №" + order.getId() + " успешно принят!";
-        configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
-        mailSender.send(message);
+        try {
+            configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
+            mailSender.send(message);
+        } catch (MailException e) {
+            log.error("Failed to send message(from admin): {}", e.getMessage());
+        } catch (MessagingException e) {
+            log.error(FAILED_CONFIGURE_MESSAGE, e.getMessage());
+        }
     }
 
     @Async
     @Override
-    public void sendEmailWithNewPasswordFromAdmin(User user, String password) throws Exception {
+    public void sendEmailWithNewPasswordFromAdmin(User user, String password) {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, UTF_8);
         String text = prepareNewPasswordRequestEmail(user, password);
         String subject = "Смена текущего пароля пользователя " + user.getUsername() + ".";
-        configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
-        mailSender.send(message);
+        try {
+            configureMimeMessageHelper(helper, adminEmailAddress, user.getEmail(), text, subject);
+            mailSender.send(message);
+        } catch (MailException e) {
+            log.error("Failed to send message(newPassword): mail - {}", user.getEmail());
+        } catch (MessagingException e) {
+            log.error(FAILED_CONFIGURE_MESSAGE, e.getMessage());
+        }
+
     }
 
     @Override
@@ -83,7 +103,7 @@ public class EmailSender implements IEmailSender {
         } catch (MailException e) {
             log.error("Failed to send message to mail {}", sendMessage.getEmail());
         } catch (MessagingException e) {
-            log.error("Failed configure message {}", e.getMessage());
+            log.error(FAILED_CONFIGURE_MESSAGE, e.getMessage());
         }
     }
 

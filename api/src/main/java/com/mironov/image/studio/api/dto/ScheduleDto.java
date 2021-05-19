@@ -1,6 +1,5 @@
 package com.mironov.image.studio.api.dto;
 
-import com.mironov.image.studio.entities.User;
 import com.mironov.image.studio.enums.Status;
 import lombok.*;
 

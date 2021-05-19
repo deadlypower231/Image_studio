@@ -1,5 +1,6 @@
 package com.mironov.image.studio.configuration;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import java.util.concurrent.Executor;
 
 @Configuration
 @EnableAsync
+@Log4j2
 public class MailConfiguration {
 
     @Value("${mail.debug}")
@@ -60,17 +62,13 @@ public class MailConfiguration {
         mailSender.setPort(Integer.parseInt(mailSenderSetPort));
         mailSender.setUsername(mailSenderSetUsername);
         mailSender.setPassword(mailSenderSetPassword);
-
-
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", mailSmtpStarttlsEnableProperty);
         javaMailProperties.put("mail.smtp.auth", mailSmtpAuthProperty);
         javaMailProperties.put("mail.transport.protocol", mailTransportProtocolProperty);
         javaMailProperties.put("mail.debug", mailDebugProperty);
-
         mailSender.setJavaMailProperties(javaMailProperties);
         return mailSender;
-
     }
 
     @Bean
@@ -90,7 +88,7 @@ public class MailConfiguration {
 
     @Async("threadPoolTaskExecutor")
     public void asyncMethodWithConfiguredExecutor() {
-        System.out.println("Execute method with configured executor - "
+        log.info("Execute method with configured executor - "
                 + Thread.currentThread().getName());
     }
 

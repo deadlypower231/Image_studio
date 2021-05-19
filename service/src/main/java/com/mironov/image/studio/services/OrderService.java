@@ -12,8 +12,8 @@ import com.mironov.image.studio.entities.User;
 import com.mironov.image.studio.enums.Status;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,23 +50,24 @@ public class OrderService implements IOrderService {
         order.setSchedule(schedule);
         order.setTournament(this.tournamentDao.get(idDataOrderDto.getIdTournament()));
         order.setPrice(order.getMasterService().getPrice());
+        order.setStatus(Status.ACTIVE);
         Order saved = this.orderDao.create(order);
         List<Order> orders = new ArrayList<>(currentUser.getOrders());
         orders.add(saved);
         currentUser.setOrders(orders);
         this.userDao.update(currentUser);
+        this.emailSender.sendEmailFromAdminByOrder(currentUser, order);
         log.info("A new order has been created for the user: {}", currentUser.getUsername());
-        try {
-            this.emailSender.sendEmailFromAdminByOrder(currentUser, order);
-        } catch (Exception e) {
-            log.error("Failed to send email to {}. Error massage: {}", currentUser.getUsername(), e.getMessage());
-        }
-
     }
 
     @Override
-    public List<OrderDto> getAllOrdersByCurrentUser(long id) {
-        return OrderMapper.mapOrdersDto(this.orderDao.getAllByCurrentUser(id));
+    public List<OrderDto> getAllActiveOrdersByCurrentUser(long id) {
+        return OrderMapper.mapOrdersDto(this.orderDao.getAllByCurrentUser(id, Status.ACTIVE));
+    }
+
+    @Override
+    public List<OrderDto> getAllArchiveOrdersByCurrentUser(long id) {
+        return OrderMapper.mapOrdersDto(this.orderDao.getAllByCurrentUser(id, Status.INACTIVE));
     }
 
     @Override

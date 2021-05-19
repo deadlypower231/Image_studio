@@ -1,8 +1,10 @@
 package com.mironov.image.studio.services;
 
+import com.mironov.image.studio.api.dao.IDescriptionDao;
 import com.mironov.image.studio.api.dao.IRoleDao;
 import com.mironov.image.studio.api.dao.IUserDao;
 import com.mironov.image.studio.api.dto.*;
+import com.mironov.image.studio.api.mappers.DescriptionMapper;
 import com.mironov.image.studio.api.mappers.RoleMapper;
 import com.mironov.image.studio.api.mappers.UserCreateMapper;
 import com.mironov.image.studio.api.mappers.UserMapper;
@@ -11,6 +13,7 @@ import com.mironov.image.studio.api.utils.IEmailSender;
 import com.mironov.image.studio.entities.Role;
 import com.mironov.image.studio.entities.User;
 import com.mironov.image.studio.enums.Status;
+import com.mironov.image.studio.utils.LogoFileUploader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.data.domain.Page;
@@ -22,11 +25,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.persistence.NoResultException;
-import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,12 +41,14 @@ import java.util.stream.IntStream;
 public class UserService implements IUserService {
 
     private final PasswordEncoder passwordEncoder;
+    private final IDescriptionDao descriptionDao;
     private final IUserDao userDao;
     private final IRoleDao roleDao;
     private final IEmailSender emailSender;
 
-    public UserService(PasswordEncoder passwordEncoder, IUserDao userDao, IRoleDao roleDao, IEmailSender emailSender) {
+    public UserService(PasswordEncoder passwordEncoder, IDescriptionDao descriptionDao, IUserDao userDao, IRoleDao roleDao, IEmailSender emailSender) {
         this.passwordEncoder = passwordEncoder;
+        this.descriptionDao = descriptionDao;
         this.userDao = userDao;
         this.roleDao = roleDao;
         this.emailSender = emailSender;
@@ -62,7 +69,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean findUserByNumberPhone(long phone) {
+    public boolean findUserByNumberPhone(String phone) {
         try {
             return this.userDao.checkUserByPhone(phone);
         } catch (NoResultException e) {
@@ -85,8 +92,7 @@ public class UserService implements IUserService {
     @Transactional
     public void updateUserRoles(UserRolesDto userRolesDto, long id) {
         User user = this.userDao.get(id);
-        List<Role> rolesDB = this.roleDao.getAll();
-        rolesDB.removeIf(x -> !userRolesDto.getRoles().toString().contains(x.toString()));
+        List<Role> rolesDB = this.roleDao.getAll().stream().filter(x -> userRolesDto.getRoles().toString().contains(x.toString())).collect(Collectors.toList());
         user.setRoles(rolesDB);
         this.userDao.update(user);
     }
@@ -129,12 +135,33 @@ public class UserService implements IUserService {
         entity.setPhone(userUpdateDto.getPhone());
         if (!entity.getUsername().equals(userUpdateDto.getUsername())) {
             entity.setUsername(userUpdateDto.getUsername());
+            @SuppressWarnings("unchecked")
             Collection<SimpleGrantedAuthority> nowAuthorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder
                     .getContext().getAuthentication().getAuthorities();
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(entity.getUsername(), entity.getPassword(), nowAuthorities);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         this.userDao.update(entity);
+    }
+
+    @Override
+    @Transactional
+    public void updateUserDescription(DescriptionDto descriptionDto, long id) {
+        User user = this.userDao.get(id);
+        user.setDescription(this.descriptionDao.create(DescriptionMapper.mapCreateDescription(descriptionDto)));
+        this.userDao.update(user);
+    }
+
+    @Override
+    public void updateUserImage(MultipartFile multipartFile, long id) {
+        User entity = this.userDao.get(id);
+        try {
+            if (multipartFile != null) {
+                LogoFileUploader.createImageUser(multipartFile, entity);
+            }
+        } catch (IOException e) {
+            log.error("Failed to upload image to user: {}. Error message: {}", entity.getUsername(), e.getMessage());
+        }
     }
 
     @Override
@@ -149,8 +176,8 @@ public class UserService implements IUserService {
     @Override
     public boolean checkValidEmail(String email) {
         try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
+            InternetAddress emailAddress = new InternetAddress(email);
+            emailAddress.validate();
             return true;
         } catch (AddressException e) {
             return false;
@@ -162,16 +189,13 @@ public class UserService implements IUserService {
     public boolean createNewPassword(EmailDto email) {
         try {
             User user = this.userDao.getUserByEmail(email.getEmail());
-            String newPassword = RandomStringUtils.random(10, 0, 8, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
+            String newPassword = RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
             user.setPassword(passwordEncoder.encode(newPassword));
             this.userDao.update(user);
             this.emailSender.sendEmailWithNewPasswordFromAdmin(user, newPassword);
             return true;
         } catch (NoResultException e) {
             return false;
-        } catch (Exception e) {
-            log.error("Failed to send email. Error massage: {}", e.getMessage());
-            return true;
         }
     }
 
@@ -191,23 +215,17 @@ public class UserService implements IUserService {
     @Override
     public Map<String, Object> findPaginatedUsers(Pageable pageable) {
         final List<UserDto> users = UserMapper.mapUsersDto(this.userDao.getAll());
-        Map<String, Object> models = new HashMap<>();
-        int startItem = pageable.getPageNumber() * pageable.getPageSize();
-        List<UserDto> list;
-        if (users.size() < startItem) {
-            list = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageable.getPageSize(), users.size());
-            list = users.subList(startItem, toIndex);
-        }
-        models.putAll(pageable(pageable.getPageNumber(), new PageImpl<>(list, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), users.size())));
-        return models;
+        return new HashMap<>(pageable(pageable.getPageNumber(), pageable, users));
     }
 
     @Override
     public Map<String, Object> findPaginatedUsersSearch(Pageable pageable, String text) {
         final List<UserDto> users = UserMapper.mapUsersDto(this.userDao.searchUsers(text));
-        Map<String, Object> models = new HashMap<>();
+        return new HashMap<>(pageable(pageable.getPageNumber(), pageable, users));
+    }
+
+    private Map<String, Object> pageable(Integer currentPage, Pageable pageable, List<UserDto> users) {
+        Map<String, Object> model = new HashMap<>();
         int startItem = pageable.getPageNumber() * pageable.getPageSize();
         List<UserDto> list;
         if (users.size() < startItem) {
@@ -216,15 +234,7 @@ public class UserService implements IUserService {
             int toIndex = Math.min(startItem + pageable.getPageSize(), users.size());
             list = users.subList(startItem, toIndex);
         }
-        models.putAll(pageable(pageable.getPageNumber(), new PageImpl<>(list, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), users.size())));
-        return models;
-    }
-
-    private Map<String, Object> pageable(Integer currentPage, Page<UserDto> userPage) {
-        Map<String, Object> model = new HashMap<>();
-        model.put("previousPage", (currentPage > 1) ? currentPage : 1);
-        model.put("nextPage", (currentPage + 1 < userPage.getTotalPages()) ? currentPage + 2 : userPage.getTotalPages());
-        model.put("userPage", userPage);
+        Page<UserDto> userPage = new PageImpl<>(list, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()), users.size());
         int totalPages = userPage.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
@@ -232,6 +242,9 @@ public class UserService implements IUserService {
                     .collect(Collectors.toList());
             model.put("pageNumbers", pageNumbers);
         }
+        model.put("previousPage", (currentPage > 1) ? currentPage : 1);
+        model.put("nextPage", (currentPage + 1 < userPage.getTotalPages()) ? currentPage + 2 : userPage.getTotalPages());
+        model.put("userPage", userPage);
         return model;
     }
 

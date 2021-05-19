@@ -4,13 +4,12 @@ import com.mironov.image.studio.api.dao.IUserDao;
 import com.mironov.image.studio.api.dto.UserCreateDto;
 import com.mironov.image.studio.api.mappers.UserCreateMapper;
 import com.mironov.image.studio.api.services.IActivationService;
-import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.enums.Status;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NoResultException;
-import javax.transaction.Transactional;
 import java.util.Base64;
 
 @Service
@@ -18,11 +17,9 @@ import java.util.Base64;
 public class ActivationService implements IActivationService {
 
     private final IUserDao userDao;
-    private final ISecurityService securityService;
 
-    public ActivationService(IUserDao userDao, ISecurityService securityService) {
+    public ActivationService(IUserDao userDao) {
         this.userDao = userDao;
-        this.securityService = securityService;
     }
 
     @Override

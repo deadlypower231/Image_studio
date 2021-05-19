@@ -10,7 +10,7 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `phone` bigint(20) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `username` varchar(50) NOT NULL,
   `description_id` bigint(20) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,

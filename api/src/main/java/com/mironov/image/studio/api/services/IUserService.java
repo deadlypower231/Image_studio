@@ -2,6 +2,7 @@ package com.mironov.image.studio.api.services;
 
 import com.mironov.image.studio.api.dto.*;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ public interface IUserService {
 
     boolean findUserByName(String name);
 
-    boolean findUserByNumberPhone(long phone);
+    boolean findUserByNumberPhone(String phone);
 
     boolean findUserByEmail(String email);
 
@@ -32,6 +33,10 @@ public interface IUserService {
     Set<UserDto> searchMasters(String text);
 
     void updateUser(UserUpdateDto userUpdateDto);
+
+    void updateUserImage(MultipartFile multipartFile, long id);
+
+    void updateUserDescription(DescriptionDto descriptionDto, long id);
 
     boolean createNewPassword(EmailDto email);
 

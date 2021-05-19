@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="rest" />
+        <module name="logg" />
         <module name="dao" />
         <module name="util" />
         <module name="service" />
@@ -17,14 +18,17 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="23" target="8" />
       <module name="logger" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="23" options="-parameters" />
       <module name="api" options="-parameters" />
       <module name="dao" options="-parameters" />
       <module name="entity" options="-parameters" />
+      <module name="logg" options="-parameters" />
       <module name="logger" options="-parameters" />
       <module name="main" options="-parameters" />
       <module name="rest" options="-parameters" />

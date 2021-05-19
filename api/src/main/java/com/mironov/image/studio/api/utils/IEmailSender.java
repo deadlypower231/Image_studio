@@ -7,11 +7,11 @@ import com.mironov.image.studio.entities.User;
 
 public interface IEmailSender {
 
-    void sendEmailFromAdmin(User user, String encoding) throws Exception;
+    void sendEmailFromAdmin(User user, String encoding);
 
-    void sendEmailFromAdminByOrder(User user, Order order) throws Exception;
+    void sendEmailFromAdminByOrder(User user, Order order);
 
-    void sendEmailWithNewPasswordFromAdmin(User user, String password) throws Exception;
+    void sendEmailWithNewPasswordFromAdmin(User user, String password);
 
     void sendEmailFromMasterToUser(CurrentUserDto user, SendMessageDto sendMessage);
 

@@ -14,6 +14,6 @@ public class CurrentUserDto {
     private String lastName;
     private String username;
     private String email;
-    private long numberPhone;
+    private String numberPhone;
 
 }

@@ -6,11 +6,10 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 	<changeSet context="legacy" author="evgeniymironov" id="changelog-6.0">
 		<sql endDelimiter="/">
-			CREATE TRIGGER add_submit_date_to_my_table BEFORE UPDATE
-			ON test1.order FOR EACH ROW
-			if new.submit_date is null then
+			CREATE TRIGGER add_submit_date_to_my_table BEFORE INSERT
+			ON image_studio.order FOR EACH ROW BEGIN
 			set new.submit_date = current_timestamp();
-			end if;
+			end
 			/
 		</sql>
 	</changeSet>

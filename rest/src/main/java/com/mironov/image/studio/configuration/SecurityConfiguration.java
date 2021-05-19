@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -19,10 +20,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final AccessDeniedHandler accessDeniedHandler;
     private final DataSource dataSource;
+    private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfiguration(AccessDeniedHandler accessDeniedHandler, DataSource dataSource) {
+    public SecurityConfiguration(AccessDeniedHandler accessDeniedHandler, DataSource dataSource, PasswordEncoder passwordEncoder) {
         this.accessDeniedHandler = accessDeniedHandler;
         this.dataSource = dataSource;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
@@ -40,8 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/activation/**", "/images/**", "/js/**", "/styles/**").permitAll()
-                .antMatchers("/", "/signup", "/login/**").anonymous()
+                .antMatchers("/", "/activation/**", "/images/**", "/js/**", "/styles/**").permitAll()
+                .antMatchers("/signup", "/login/**").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
                 .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
@@ -53,6 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource).authoritiesByUsernameQuery(
                 "SELECT user.username as username, role.role as role FROM user INNER JOIN user_role ON user.id = user_role.user_id INNER JOIN role ON user_role.role_id = role.id WHERE user.username = ?")
-                .usersByUsernameQuery("select username, password, status from user where username = ?");
+                .usersByUsernameQuery("select username, password, status from user where username = ?").passwordEncoder(passwordEncoder);
     }
 }

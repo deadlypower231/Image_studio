@@ -17,9 +17,9 @@ import com.mironov.image.studio.enums.Status;
 import com.mironov.image.studio.utils.LogoFileUploader;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +50,7 @@ public class TournamentService implements ITournamentService {
 
 
     @Transactional
+    @Override
     public void saveTournament(TournamentDto tournamentDto, MultipartFile file) {
         tournamentDto.setStatus(Status.ACTIVE);
         Tournament savedTournament = this.tournamentDao.create(TournamentMapper.mapTournamentCreate(tournamentDto));

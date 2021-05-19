@@ -27,8 +27,6 @@ public class UserController {
         return "user";
     }
 
-    //todo переделать на сервиса и обработать ошибку
-
     @PostMapping("/sendMessage")
     public String sendMessage(@ModelAttribute("sendMessage") SendMessageDto sendMessage, Model model) {
         this.userService.sendMessage(this.securityService.findLoggedInUser(), sendMessage);

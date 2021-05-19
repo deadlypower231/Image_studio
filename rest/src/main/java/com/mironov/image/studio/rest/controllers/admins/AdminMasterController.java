@@ -52,10 +52,10 @@ public class AdminMasterController {
             model.addAttribute(SEARCH, searchDto);
             model.addAttribute(SERVICE, new MasterServiceDto());
             model.addAttribute(SERVICE_IDS, new ServiceIdsDto());
-            return ADMIN_MASTERS;
+        } else {
+            model.addAttribute(MASTERS, this.userService.searchMasters(searchDto.getText()));
+            model.addAttribute(SEARCH, new SearchDto());
         }
-        model.addAttribute(MASTERS, this.userService.searchMasters(searchDto.getText()));
-        model.addAttribute(SEARCH, new SearchDto());
         return ADMIN_MASTERS;
     }
 

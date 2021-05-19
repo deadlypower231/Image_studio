@@ -9,7 +9,9 @@ public interface IOrderService {
 
     void createOrder(IdDataOrderDto idDataOrderDto, long id);
 
-    List<OrderDto> getAllOrdersByCurrentUser(long id);
+    List<OrderDto> getAllActiveOrdersByCurrentUser(long id);
+
+    List<OrderDto> getAllArchiveOrdersByCurrentUser(long id);
 
     void deleteOrder(long id);
 

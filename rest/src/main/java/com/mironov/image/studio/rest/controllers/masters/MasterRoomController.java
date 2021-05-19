@@ -1,6 +1,5 @@
 package com.mironov.image.studio.rest.controllers.masters;
 
-import com.mironov.image.studio.api.services.IScheduleService;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.ITournamentService;
 import com.mironov.image.studio.enums.Status;
@@ -15,18 +14,14 @@ public class MasterRoomController {
 
     private final ISecurityService securityService;
     private final ITournamentService tournamentService;
-    private final IScheduleService scheduleService;
 
-    public MasterRoomController(ISecurityService securityService, ITournamentService tournamentService, IScheduleService scheduleService) {
+    public MasterRoomController(ISecurityService securityService, ITournamentService tournamentService) {
         this.securityService = securityService;
         this.tournamentService = tournamentService;
-        this.scheduleService = scheduleService;
     }
 
-    //todo
-
     @GetMapping("/tournaments")
-    public String orderToTournamentPage(Model model){
+    public String orderToTournamentPage(Model model) {
         model.addAttribute("currentUser", this.securityService.findLoggedInUser());
         model.addAttribute("ordersForTournament",
                 this.tournamentService.getTournamentsWithMaster(this.securityService.findLoggedInUser().getId(), Status.ACTIVE));

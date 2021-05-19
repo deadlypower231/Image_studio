@@ -27,8 +27,6 @@ public class LoginController {
         return "signup/forgotPassword";
     }
 
-    //todo make redirect to login page
-
     @PostMapping("/forgotPassword")
     public String sendNewPasswordToUser(@ModelAttribute("email") @Valid EmailDto email, BindingResult bindingResult, Model model) {
         if (!this.userService.createNewPassword(email)) {
@@ -38,7 +36,6 @@ public class LoginController {
             return "signup/forgotPassword";
         }
         return "redirect:/login";
-
     }
 
 }

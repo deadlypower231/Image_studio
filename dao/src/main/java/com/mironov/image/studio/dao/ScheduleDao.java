@@ -1,10 +1,7 @@
 package com.mironov.image.studio.dao;
 
 import com.mironov.image.studio.api.dao.IScheduleDao;
-import com.mironov.image.studio.entities.Schedule;
-import com.mironov.image.studio.entities.Schedule_;
-import com.mironov.image.studio.entities.User;
-import com.mironov.image.studio.entities.User_;
+import com.mironov.image.studio.entities.*;
 import com.mironov.image.studio.enums.Status;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +11,7 @@ import java.util.List;
 
 @Repository
 public class ScheduleDao extends AGenericDao<Schedule> implements IScheduleDao {
-    public ScheduleDao(){
+    public ScheduleDao() {
         super(Schedule.class);
     }
 
@@ -25,7 +22,7 @@ public class ScheduleDao extends AGenericDao<Schedule> implements IScheduleDao {
         Root<User> root = criteria.from(User.class);
         Join<User, Schedule> schedules = root.join(User_.SCHEDULES);
         Predicate predicate = criteriaBuilder.and(
-                criteriaBuilder.equal(root.get(User_.ID),idMaster),
+                criteriaBuilder.equal(root.get(AEntity_.ID), idMaster),
                 criteriaBuilder.equal(schedules.get(Schedule_.TOURNAMENT), idTournament),
                 criteriaBuilder.equal(schedules.get(Schedule_.STATUS), Status.ACTIVE));
         criteria.select(schedules)
@@ -42,7 +39,7 @@ public class ScheduleDao extends AGenericDao<Schedule> implements IScheduleDao {
         Root<User> root = criteria.from(User.class);
         Join<User, Schedule> schedules = root.join(User_.SCHEDULES);
         Predicate predicate = criteriaBuilder.and(
-                criteriaBuilder.equal(root.get(User_.ID),idMaster),
+                criteriaBuilder.equal(root.get(AEntity_.ID), idMaster),
                 criteriaBuilder.equal(schedules.get(Schedule_.TOURNAMENT), idTournament));
         criteria.select(schedules)
                 .where(predicate)

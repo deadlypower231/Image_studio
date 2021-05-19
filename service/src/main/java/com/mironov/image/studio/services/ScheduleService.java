@@ -5,8 +5,8 @@ import com.mironov.image.studio.api.dto.ScheduleDto;
 import com.mironov.image.studio.api.mappers.ScheduleMapper;
 import com.mironov.image.studio.api.services.IScheduleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -33,4 +33,5 @@ public class ScheduleService implements IScheduleService {
     public void deleteById(long id) {
         this.scheduleDao.delete(this.scheduleDao.get(id));
     }
+
 }

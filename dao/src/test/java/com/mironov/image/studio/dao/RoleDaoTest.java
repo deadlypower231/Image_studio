@@ -16,9 +16,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RoleDaoTest {
 
     @Autowired
-    private  TestEntityManager entityManager;
+    private TestEntityManager entityManager;
     @Autowired
-    private  IRoleDao roleDao;
+    private IRoleDao roleDao;
 
 
     @Test
@@ -34,7 +34,32 @@ public class RoleDaoTest {
         assertThat(found.getId()).isSameAs(testRoleId);
     }
 
-    private Role createRole(String string){
+    @Test
+    public void whenDeletedThenFoundById() {
+        long testRoleId = entityManager.persistAndGetId(createRole("testName"), Long.class);
+        Role role = roleDao.get(testRoleId);
+        roleDao.delete(role);
+        assertThat(role.getId()).isSameAs(testRoleId);
+    }
+
+    @Test
+    public void whenChangeNameRole() {
+        long testRoleId = entityManager.persistAndGetId(createRole("testName"), Long.class);
+        Role role = roleDao.get(testRoleId);
+        role.setRoleName("test");
+        roleDao.update(role);
+        assertThat(role.getRoleName()).isEqualTo("test");
+    }
+
+    @Test
+    public void whenDifficultRoleById() {
+        long testRoleId1 = entityManager.persistAndGetId(createRole("testName"), Long.class);
+        long testRoleId2 = entityManager.persistAndGetId(createRole("testName"), Long.class);
+        assertThat(roleDao.get(testRoleId1)).isNotEqualTo(roleDao.get(testRoleId2));
+    }
+
+
+    private Role createRole(String string) {
         Role role = new Role();
         role.setRoleName(string);
         return role;

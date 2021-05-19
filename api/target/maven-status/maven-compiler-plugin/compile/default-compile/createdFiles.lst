@@ -58,6 +58,7 @@ com\mironov\image\studio\api\dto\TournamentDto$TournamentDtoBuilder.class
 com\mironov\image\studio\api\services\IUserService.class
 com\mironov\image\studio\api\dto\ScheduleDto.class
 com\mironov\image\studio\api\dto\UserRolesDto$UserRolesDtoBuilder.class
+com\mironov\image\studio\api\services\IScheduleTask.class
 com\mironov\image\studio\api\mappers\UserMapper.class
 com\mironov\image\studio\api\dto\EmailDto$EmailDtoBuilder.class
 com\mironov\image\studio\api\dto\DescriptionDto$DescriptionDtoBuilder.class

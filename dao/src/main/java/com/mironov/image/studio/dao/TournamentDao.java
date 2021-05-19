@@ -1,10 +1,7 @@
 package com.mironov.image.studio.dao;
 
 import com.mironov.image.studio.api.dao.ITournamentDao;
-import com.mironov.image.studio.entities.Tournament;
-import com.mironov.image.studio.entities.Tournament_;
-import com.mironov.image.studio.entities.User;
-import com.mironov.image.studio.entities.User_;
+import com.mironov.image.studio.entities.*;
 import com.mironov.image.studio.enums.Status;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +22,7 @@ public class TournamentDao extends AGenericDao<Tournament> implements ITournamen
         Root<Tournament> root = criteriaQuery.from(Tournament.class);
         Join<Tournament, User> users = root.join(Tournament_.USERS);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.equal(users.get(User_.ID), id));
+                .where(criteriaBuilder.equal(users.get(AEntity_.ID), id));
         TypedQuery<Tournament> q = entityManager.createQuery(criteriaQuery);
         return q.getResultList();
     }
@@ -37,7 +34,7 @@ public class TournamentDao extends AGenericDao<Tournament> implements ITournamen
         Root<Tournament> root = criteriaQuery.from(Tournament.class);
         Join<Tournament, User> users = root.join(Tournament_.USERS);
         Predicate predicate = criteriaBuilder.and(
-                criteriaBuilder.equal(users.get(User_.ID), id),
+                criteriaBuilder.equal(users.get(AEntity_.ID), id),
                 criteriaBuilder.equal(root.get(Tournament_.STATUS), status));
         criteriaQuery.select(root)
                 .where(predicate);

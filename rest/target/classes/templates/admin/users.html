@@ -1,5 +1,5 @@
 <html xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en-US">
 <head>
     <title>Users</title>
     <link href="../../styles/styles.css" rel="stylesheet"/>
@@ -42,6 +42,7 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/admin/tournaments/create">Создать турнир</a>
                 <a class="dropdown-item" href="/admin/tournaments/delete">Удалить турнир</a>
+                <a class="dropdown-item" href="/admin/tournaments/update">Обновить туниры</a>
             </div>
         </div>
     </li>
@@ -90,6 +91,9 @@
         </th>
         <th scope="col">
             Удалить пользователя
+        </th>
+        <th scope="col">
+            Изменить
         </th>
         <th scope="col">
             Статус
@@ -163,9 +167,15 @@
                 </div>
             </td>
             <td>
+                <a th:href="'/admin/users/settings/' + ${entity.id}">
+                    <button type="button" class="btn btn-danger btn-sm">Изменить
+                    </button>
+                </a>
+            </td>
+            <td>
                 <form th:action="'/admin/users/status'" th:object="${id}" method="post">
                     <input type="hidden" name="id" th:value="${entity.id}">
-                    <input type="submit" th:value="${entity.status}" class="btn btn-sm btn-successful">
+                    <input type="submit" th:value="${entity.status}" class="btn btn-sm btn-success">
                 </form>
             </td>
         </tr>

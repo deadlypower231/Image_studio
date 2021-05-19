@@ -1,6 +1,7 @@
 package com.mironov.image.studio.utils;
 
 import com.mironov.image.studio.entities.Tournament;
+import com.mironov.image.studio.entities.User;
 import lombok.experimental.UtilityClass;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,8 +24,8 @@ public class LogoFileUploader {
     private static final String LOGOS_FILE_NAME_TOURNAMENT = "tournament_default.jpg";
 
     public void defaultLogoTournament(Tournament tournament) throws IOException {
-        String userName = tournament.getName();
-        String filePath = LOGOS_FOLDER_PATH + userName + IMAGE_EXTENSION;
+        String tournamentName = tournament.getName();
+        String filePath = LOGOS_FOLDER_PATH + tournamentName + IMAGE_EXTENSION;
         URL dFileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
         File defaultFile = new File(dFileUrl.getPath() + LOGOS_FILE_NAME_TOURNAMENT);
         File tournamentLogo;
@@ -33,7 +34,7 @@ public class LogoFileUploader {
         } catch (FileNotFoundException e) {
             URL fileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
             tournamentLogo = new File(
-                    fileUrl.getPath() + userName + IMAGE_EXTENSION);
+                    fileUrl.getPath() + tournamentName + IMAGE_EXTENSION);
         }
         BufferedImage image = ImageIO.read(defaultFile);
         ImageIO.write(image, "jpg", tournamentLogo);
@@ -41,7 +42,25 @@ public class LogoFileUploader {
 
     public void createLogoTournament(MultipartFile file, Tournament tournament) throws IOException {
         if (file != null && !file.isEmpty()) {
-            String userName = tournament.getName();
+            String tournamentName = tournament.getName();
+            String filePath = LOGOS_FOLDER_PATH + tournamentName + IMAGE_EXTENSION;
+            File tournamentLogo;
+            try {
+                tournamentLogo = ResourceUtils.getFile(filePath);
+            } catch (FileNotFoundException e) {
+                URL fileUrl = ResourceUtils.getURL(LOGOS_FOLDER_PATH);
+                tournamentLogo = new File(
+                        fileUrl.getPath() + tournamentName + IMAGE_EXTENSION);
+            }
+            Path path = Paths.get(tournamentLogo.getPath());
+            byte[] bytes = file.getBytes();
+            Files.write(path, bytes);
+        }
+    }
+
+    public void createImageUser(MultipartFile file, User user) throws IOException {
+        if (file != null && !file.isEmpty()) {
+            String userName = user.getUsername();
             String filePath = LOGOS_FOLDER_PATH + userName + IMAGE_EXTENSION;
             File tournamentLogo;
             try {

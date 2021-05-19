@@ -19,7 +19,7 @@ public abstract class User_ extends com.mironov.image.studio.entities.AEntity_ {
 	public static volatile ListAttribute<User, Schedule> schedule;
 	public static volatile SingularAttribute<User, String> password;
 	public static volatile SingularAttribute<User, OffsetDateTime> createdDate;
-	public static volatile SingularAttribute<User, Long> phone;
+	public static volatile SingularAttribute<User, String> phone;
 	public static volatile ListAttribute<User, Schedule> schedules;
 	public static volatile SingularAttribute<User, OffsetDateTime> lastActivity;
 	public static volatile ListAttribute<User, Order> orders;

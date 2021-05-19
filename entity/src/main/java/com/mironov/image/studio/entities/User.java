@@ -28,8 +28,8 @@ public class User extends AEntity<Long> implements Serializable {
     private String firstName;
     @Column(name = "lastName", length = 15)
     private String lastName;
-    @Column(name = "phone", unique = true, length = 11, nullable = false)
-    private long phone;
+    @Column(name = "phone", unique = true, length = 15, nullable = false)
+    private String phone;
     @Column(name = "email", unique = true, length = 100, nullable = false)
     private String email;
     @Column(name = "password")
@@ -62,7 +62,6 @@ public class User extends AEntity<Long> implements Serializable {
     private List<Schedule> schedules;
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Schedule> schedule;
-
 
     public List<Role> getRoles() {
         if (roles == null) {

@@ -1,15 +1,11 @@
 package com.mironov.image.studio.api.dto;
 
-import com.mironov.image.studio.entities.Description;
-import com.mironov.image.studio.entities.Order;
-import com.mironov.image.studio.entities.Schedule;
-import com.mironov.image.studio.entities.Tournament;
 import com.mironov.image.studio.enums.Status;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +26,8 @@ public class UserCreateDto {
     @NotBlank(message = "Не должно быть пустым")
     @Size(min = 4, max = 25, message = "Введите пароль от 4 до 25 символов")
     private String password;
-    //    @Size(min = 1, max = 11, message = "Введите 11 значный номер телефона")
-    private long phone;
+    @Pattern(regexp = "\\+3[0-9]{11}", message = "Телефонный номер должен начинаться с +3, затем - 11 цифр")
+    private String phone;
     @NotBlank(message = "Не должно быть пустым")
     @Size(min = 2, max = 15, message = "Введите имя от 2 до 15 символов")
     private String firstName;
@@ -40,10 +36,9 @@ public class UserCreateDto {
     private String lastName;
     private List<RoleDto> roles;
     private Status status;
-//    private OffsetDateTime createdDate;
 
     public List<RoleDto> getRoles() {
-        if (roles == null){
+        if (roles == null) {
             return new ArrayList<>();
         }
         return roles;

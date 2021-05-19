@@ -48,7 +48,7 @@ public class UserDao extends AGenericDao<User> implements IUserDao {
     }
 
     @Override
-    public boolean checkUserByPhone(long phone) throws NoResultException {
+    public boolean checkUserByPhone(String phone) throws NoResultException {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);

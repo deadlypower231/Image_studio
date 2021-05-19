@@ -1,9 +1,7 @@
 package com.mironov.image.studio.rest.controllers;
 
-import com.mironov.image.studio.api.dto.UserDto;
 import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.ITournamentService;
-import com.mironov.image.studio.api.services.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +16,10 @@ public class TournamentController {
     private static final String TOURNAMENTS = "tournaments";
     private static final String TOURNAMENT = "tournament";
 
-    private final IUserService userService;
     private final ISecurityService securityService;
     private final ITournamentService tournamentService;
 
-    public TournamentController(IUserService userService, ISecurityService securityService, ITournamentService tournamentService) {
-        this.userService = userService;
+    public TournamentController(ISecurityService securityService, ITournamentService tournamentService) {
         this.securityService = securityService;
         this.tournamentService = tournamentService;
     }

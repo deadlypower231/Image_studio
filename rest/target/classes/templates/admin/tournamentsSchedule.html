@@ -42,6 +42,7 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/admin/tournaments/create">Создать турнир</a>
                 <a class="dropdown-item" href="/admin/tournaments/delete">Удалить турнир</a>
+                <a class="dropdown-item" href="/admin/tournaments/update">Обновить туниры</a>
             </div>
         </div>
     </li>
@@ -53,11 +54,11 @@
     </li>
 </ul>
 
-<h1 th:text="'Название ' + ${tournament.name}"></h1>
-<h1 th:text="'Дата ' + ${tournament.date}"></h1>
-<h1 th:text="'Короткое описание ' + ${tournament.description.shortDescription}"></h1>
-<h1 th:text="'Полное описание ' + ${tournament.description.fullDescription}"></h1>
-<h1 th:text="'Адрес ' + ${tournament.address}"></h1>
+<h4 th:text="'Название ' + ${tournament.name}"></h4>
+<h6 th:text="'Дата ' + ${tournament.date}"></h6>
+<h5 th:text="'Короткое описание ' + ${tournament.description.shortDescription}"></h5>
+<h5 th:text="'Полное описание ' + ${tournament.description.fullDescription}"></h5>
+<h6 th:text="'Адрес ' + ${tournament.address}"></h6>
 <p th:text="'Мастер: ' + ${master.firstName} + ' ' + ${master.lastName}"></p>
 <div th:each="schedule : ${schedules}">
     <div class="btn-group">

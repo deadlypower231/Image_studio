@@ -8,17 +8,15 @@ import com.mironov.image.studio.entities.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.RememberMeConfigurer;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.time.OffsetDateTime;
+
 
 @Service
 public class SecurityService implements ISecurityService {
@@ -39,6 +37,7 @@ public class SecurityService implements ISecurityService {
     public CurrentUserDto findLoggedInUser() {
         if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
             User user = this.userDao.getByName(SecurityContextHolder.getContext().getAuthentication().getName());
+            user.setLastActivity(OffsetDateTime.now());
             this.userDao.update(user);
             return CurrentUserMapper.mapDto(user);
         }
@@ -53,7 +52,7 @@ public class SecurityService implements ISecurityService {
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.info(String.format("Auto login %s successfully!", username));
+            logger.info("Auto login {} successfully!", username);
         }
     }
 
@@ -65,7 +64,7 @@ public class SecurityService implements ISecurityService {
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.info(String.format("Relogin %s successfully!", username));
+            logger.info("Relogin {} successfully!", username);
         }
     }
 }
