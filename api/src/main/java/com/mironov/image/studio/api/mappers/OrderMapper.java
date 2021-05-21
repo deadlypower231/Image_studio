@@ -49,7 +49,7 @@ public class OrderMapper {
                 .id(source.getId())
                 .address(source.getAddress())
                 .name(source.getName())
-                .date(Date.valueOf(source.getDate()))
+                .date(source.getDate())
                 .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))
                 .build();

@@ -11,9 +11,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Component
@@ -31,14 +31,14 @@ public class ScheduledTask implements IScheduleTask {
     @Transactional
     @Override
     public void checkTournamentDate() {
-        List<Tournament> tournaments = this.tournamentDao.getAllIsActive();
+        List<Tournament> tournaments = this.tournamentDao.getAllIsActive().stream()
+                .filter(x -> LocalDate.parse(x.getDate()).isBefore(LocalDate.now())).collect(Collectors.toList());
         List<Order> orders = this.orderDao.getAllIsActive(Status.ACTIVE);
-        tournaments.removeIf(x -> x.getDate().after(Date.valueOf(LocalDate.now())));
         for (Tournament x : tournaments) {
             x.setStatus(Status.INACTIVE);
             this.tournamentDao.update(x);
             for (Order o : orders) {
-                if(o.getTournament().getId() == x.getId()){
+                if (o.getTournament().getId() == x.getId()) {
                     o.setStatus(Status.INACTIVE);
                     this.orderDao.update(o);
                 }

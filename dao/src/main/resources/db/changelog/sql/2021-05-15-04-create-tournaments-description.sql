@@ -1,6 +1,6 @@
 INSERT INTO image_studio.tournament
 (address, `date`, name, status)
-VALUES('г.Минск, ул.Рабкоровская 17/2', '2021-04-24 00:00:00', 'Открытый Чемпионат ОО БФТ – 2021', 1);
+VALUES('г.Минск, ул.Рабкоровская 17/2', '2021-04-24', 'Открытый Чемпионат ОО БФТ – 2021', 1);
 
 INSERT INTO image_studio.description
 (full_description, short_description)
@@ -13,7 +13,7 @@ WHERE id=1;
 
 INSERT INTO image_studio.tournament
 (address, `date`, name, status)
-VALUES('г. Минск, ул. Ташкентская, 19 «Чижовка- Арена»', '2021-05-22 00:00:00', 'Открытое первенство СОО «Белорусский республиканский танцевальный союз» по танцевальному искусству', 1);
+VALUES('г. Минск, ул. Ташкентская, 19 «Чижовка- Арена»', '2021-05-22', 'Открытое первенство СОО «Белорусский республиканский танцевальный союз» по танцевальному искусству', 1);
 
 INSERT INTO image_studio.description
 (full_description, short_description)

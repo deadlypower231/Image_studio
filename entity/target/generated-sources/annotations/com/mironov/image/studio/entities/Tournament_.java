@@ -1,7 +1,6 @@
 package com.mironov.image.studio.entities;
 
 import com.mironov.image.studio.enums.Status;
-import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -11,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Tournament.class)
 public abstract class Tournament_ extends com.mironov.image.studio.entities.AEntity_ {
 
-	public static volatile SingularAttribute<Tournament, Date> date;
+	public static volatile SingularAttribute<Tournament, String> date;
 	public static volatile ListAttribute<Tournament, Schedule> schedule;
 	public static volatile SingularAttribute<Tournament, String> address;
 	public static volatile SingularAttribute<Tournament, String> name;

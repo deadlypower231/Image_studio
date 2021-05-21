@@ -41,6 +41,7 @@ com\mironov\image\studio\api\dto\SearchDto.class
 com\mironov\image\studio\api\dto\IdDataOrderDto.class
 com\mironov\image\studio\api\dto\SearchDto$SearchDtoBuilder.class
 com\mironov\image\studio\api\services\IScheduleService.class
+com\mironov\image\studio\api\mappers\DescriptionMapper.class
 com\mironov\image\studio\api\dao\ITournamentDao.class
 com\mironov\image\studio\api\dto\IdUsersDto$IdUsersDtoBuilder.class
 com\mironov\image\studio\api\services\ITournamentService.class

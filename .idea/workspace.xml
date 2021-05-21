@@ -5,196 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="535458d0-0789-48e3-9d4b-320918f6a032" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/DescriptionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IScheduleTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dao/src/test/java/com/mironov/image/studio/dao/UserDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logg/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logg/src/main/java/com/mironov/image/studio/logg/ServiceLogg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logg/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/configuration/RestConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/messages_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/static/images/Nastia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/static/images/admin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/static/images/evgen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/static/images/iron.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/DescriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1ff07cf39fe625befd50e37934a065cc1e2a5197" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c255afd0f3db4a2e1ca4ba62fdcf78400076656b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/eeff579b0c8ad4cbc8d82d42f25c1084bba994e7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest/src/main/resources/static/images/first_image.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IOrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dao/IUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/CurrentUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/CurrentUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/ScheduleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/ScheduleDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/TournamentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/TournamentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserCreateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/dto/UserUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/UserCreateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/UserCreateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IActivationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IActivationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IDescriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IDescriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IMasterServicesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IMasterServicesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/services/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/utils/IEmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/utils/IEmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/api-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/api-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/IOrderDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/IOrderDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/IUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dao/IUserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/CurrentUserDto$CurrentUserDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/CurrentUserDto$CurrentUserDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/CurrentUserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/CurrentUserDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/ScheduleDto$ScheduleDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/ScheduleDto$ScheduleDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/ScheduleDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/ScheduleDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/TournamentDto$TournamentDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/TournamentDto$TournamentDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/TournamentDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/TournamentDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserCreateDto$UserCreateDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserCreateDto$UserCreateDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserCreateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserCreateDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserDto$UserDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserDto$UserDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserUpdateDto$UserUpdateDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserUpdateDto$UserUpdateDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserUpdateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/dto/UserUpdateDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/CurrentUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/CurrentUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/MasterServiceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/MasterServiceMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/ScheduleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/ScheduleMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/UserCreateMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/UserCreateMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/IOrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/IOrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/services/IUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/utils/IEmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/utils/IEmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/TournamentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/classes/com/mironov/image/studio/api/mappers/TournamentMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/ScheduleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/ScheduleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/TournamentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/TournamentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/db.changelog-6.0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/db.changelog-6.0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-01-create-tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-01-create-tables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-03-create-users-roles.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-03-create-users-roles.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-04-create-tournaments-description.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/main/resources/db/changelog/sql/2021-05-15-04-create-tournaments-description.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/src/test/java/com/mironov/image/studio/dao/RoleDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/dao/src/test/java/com/mironov/image/studio/dao/RoleDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/OrderDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/OrderDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/RoleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/RoleDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/ScheduleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/ScheduleDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/TournamentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/TournamentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/mironov/image/studio/dao/UserDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/target/dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/dao-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/entity/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/mironov/image/studio/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/mironov/image/studio/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User$UserBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User_.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/User_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/com/mironov/image/studio/entities/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/src/main/java/com/mironov/image/studio/entities/Tournament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament$TournamentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament$TournamentBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament_.class" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/classes/com/mironov/image/studio/entities/Tournament_.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entity/target/entity-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/entity-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/target/generated-sources/annotations/com/mironov/image/studio/entities/User_.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/generated-sources/annotations/com/mironov/image/studio/entities/User_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/target/generated-sources/annotations/com/mironov/image/studio/entities/Tournament_.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/target/generated-sources/annotations/com/mironov/image/studio/entities/Tournament_.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rest/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/MyOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/MyOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/TournamentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/TournamentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminMasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminMasterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminMasterServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminMasterServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminTournamentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminTournamentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/masters/MasterRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/masters/MasterRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/utils/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/utils/CustomAccessDeniedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/static/images/qwe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/masters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsCreate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsDelete.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsDelete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsSchedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/tournamentsSchedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/admin/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/error/createEntityError.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/masters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/myOrders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/myOrders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersToTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersToTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournamentSchedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/ordersTournamentSchedules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/tournamentsMoreInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/tournamentsMoreInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/MyOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/MyOrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/SettingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/SettingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/SignupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/SignupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/TournamentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/TournamentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminMasterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminMasterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminMasterServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminMasterServiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminTournamentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminTournamentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/admins/AdminUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/masters/MasterRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/rest/controllers/masters/MasterRoomController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/utils/CustomAccessDeniedHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/com/mironov/image/studio/utils/CustomAccessDeniedHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/static/images/qwe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/masters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsCreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsCreate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsDelete.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsDelete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsSchedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/tournamentsSchedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/admin/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/admin/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/error/createEntityError.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/src/main/resources/templates/error/403.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/masters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/myOrders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/myOrders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/ordersToTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/ordersToTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournamentSchedules.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/ordersTournamentSchedules.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/tournaments.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/tournaments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/classes/templates/tournamentsMoreInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/classes/templates/tournamentsMoreInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest/target/rest-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/rest/target/rest-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/configuration/ServiceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/configuration/ServiceConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/security/SecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/security/SecurityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ActivationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ActivationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/MasterServicesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/MasterServicesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/ScheduleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/LogoFileUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/LogoFileUploader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/ScheduledTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/ScheduledTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/configuration/ServiceConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/configuration/ServiceConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/security/SecurityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/security/SecurityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/ActivationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/ActivationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/MasterServicesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/MasterServicesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/ScheduleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/ScheduleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/TournamentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/TournamentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/utils/LogoFileUploader.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/mironov/image/studio/utils/LogoFileUploader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/target/service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/configuration/MailConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/configuration/MailConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/utils/mail/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/utils/mail/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/target/classes/com/mironov/image/studio/configuration/MailConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/util/target/classes/com/mironov/image/studio/configuration/MailConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util/target/classes/com/mironov/image/studio/utils/mail/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/util/target/classes/com/mironov/image/studio/utils/mail/EmailSender.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util/target/util-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/util/target/util-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
@@ -263,8 +115,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\rest\src\main\resources\static\images" />
-      <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\rest\src\main\resources\templates\error" />
       <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\rest\src\main\resources\templates\admin" />
+      <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\rest\src\main\resources\templates\error" />
       <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\rest\src\main\resources" />
       <recent name="C:\Users\User\Desktop\itAcademySecondCourse\FinalImageStudio\dao\src\main\resources\db\changelog" />
     </key>
@@ -422,11 +274,6 @@
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/MasterServiceMapper.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/MasterServicesService.java</url>
           <line>50</line>
           <option name="timeStamp" value="118" />
@@ -528,12 +375,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>72</line>
+          <line>71</line>
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>73</line>
+          <line>72</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -698,12 +545,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="286" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java</url>
-          <line>19</line>
+          <line>21</line>
           <option name="timeStamp" value="287" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -743,7 +585,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>56</line>
+          <line>55</line>
           <option name="timeStamp" value="325" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -847,58 +689,48 @@
           <option name="timeStamp" value="402" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/ScheduledTask.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="415" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/ScheduledTask.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="416" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/OrderDao.java</url>
           <line>35</line>
           <option name="timeStamp" value="417" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>105</line>
+          <line>104</line>
           <option name="timeStamp" value="421" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>106</line>
+          <line>105</line>
           <option name="timeStamp" value="422" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>111</line>
+          <line>110</line>
           <option name="timeStamp" value="425" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>107</line>
+          <line>106</line>
           <option name="timeStamp" value="426" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>108</line>
+          <line>107</line>
           <option name="timeStamp" value="427" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>110</line>
+          <line>109</line>
           <option name="timeStamp" value="428" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>116</line>
+          <line>115</line>
           <option name="timeStamp" value="429" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/admins/AdminUserController.java</url>
-          <line>117</line>
+          <line>116</line>
           <option name="timeStamp" value="430" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -920,6 +752,46 @@
           <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/SettingController.java</url>
           <line>49</line>
           <option name="timeStamp" value="435" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rest/src/main/java/com/mironov/image/studio/rest/controllers/MyOrderController.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="436" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="437" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/java/com/mironov/image/studio/api/mappers/TournamentMapper.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="438" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="439" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="440" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/services/TournamentService.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="441" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/dao/src/main/java/com/mironov/image/studio/dao/AGenericDao.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="443" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/service/src/main/java/com/mironov/image/studio/utils/ScheduledTask.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="444" />
         </line-breakpoint>
         <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/util/src/main/java/com/mironov/image/studio/utils/mail/EmailSender.java</url>

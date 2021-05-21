@@ -44,7 +44,7 @@ CREATE TABLE `service` (
 CREATE TABLE `tournament` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `address` varchar(255) DEFAULT NULL,
-  `date` datetime(6) DEFAULT NULL,
+  `date` varchar(21) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `description_id` bigint(20) DEFAULT NULL,
   `status` smallint(6) DEFAULT NULL,

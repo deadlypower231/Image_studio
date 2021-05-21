@@ -102,7 +102,7 @@
                                         <div class="modal-body">
                                             <p style="color:black;" th:text="#{sure_you_want_to_cancel_your_order?}">Уверены что хотите отменить заказ?</p>
                                             <form action="#" th:action="'/orders/delete'" th:object="${id}"
-                                                  th:method="delete">
+                                                  th:method="post">
                                                 <input type="hidden" name="id" th:value="${order.id}">
                                                 <div class="btn-group">
                                                     <input type="submit" class="btn btn-success" th:text="#{confirm}">

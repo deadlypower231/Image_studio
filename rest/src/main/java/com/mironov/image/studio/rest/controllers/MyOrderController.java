@@ -5,9 +5,9 @@ import com.mironov.image.studio.api.services.IOrderService;
 import com.mironov.image.studio.api.services.ISecurityService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -31,10 +31,11 @@ public class MyOrderController {
         return "myOrders";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteOrder(@ModelAttribute(name = "id") IdDto idDto, Model model) {
+    @PostMapping
+    @RequestMapping("/delete")
+    public String deleteOrder(@ModelAttribute(name = "id") IdDto idDto) {
         this.orderService.deleteOrder(idDto.getId());
-        return "redirect:/myOrders";
+        return "redirect:/orders";
     }
 
 }

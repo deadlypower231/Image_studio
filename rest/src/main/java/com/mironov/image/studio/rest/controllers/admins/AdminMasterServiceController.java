@@ -35,6 +35,12 @@ public class AdminMasterServiceController {
         return "admin/services";
     }
 
+    @PostMapping("/add")
+    public String addService(@ModelAttribute(name = "service") MasterServiceDto masterServiceDto){
+        this.masterServicesService.createService(masterServiceDto, masterServiceDto.getIdMaster());
+        return "redirect:/admin/service";
+    }
+
     @PostMapping("/delete")
     public String deleteService(@ModelAttribute(name = "id") IdDto id) {
         this.masterServicesService.deleteService(id.getId());

@@ -7,6 +7,8 @@ import com.mironov.image.studio.entities.Tournament;
 import lombok.experimental.UtilityClass;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,7 @@ public class TournamentMapper {
         return Tournament.builder()
                 .id(source.getId())
                 .address(source.getAddress())
-                .date(Date.valueOf(source.getDate()))
+                .date(source.getDate())
                 .name(source.getName())
                 .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))
@@ -29,7 +31,7 @@ public class TournamentMapper {
         return TournamentDto.builder()
                 .id(source.getId())
                 .address(source.getAddress())
-                .date(String.valueOf(source.getDate()))
+                .date(source.getDate())
                 .name(source.getName())
                 .status(source.getStatus())
                 .description(mapDescriptionDto(source.getDescription()))
@@ -40,7 +42,8 @@ public class TournamentMapper {
     public Tournament mapTournamentCreate(TournamentDto source) {
         return Tournament.builder()
                 .address(source.getAddress())
-                .date(Date.valueOf(source.getDate()))
+//                .date(Date.valueOf(source.getDate()))
+                .date(source.getDate())
                 .name(source.getName())
                 .status(source.getStatus())
                 .description(mapDescription(source.getDescription()))

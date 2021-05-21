@@ -23,7 +23,7 @@ public class Tournament extends AEntity<Long> implements Serializable {
     @Column(name = "name", length = 100)
     private String name;
     @Column(name = "date", length = 21)
-    private Date date;
+    private String date;
     @Column(name = "address")
     private String address;
     @Column(name = "status")
