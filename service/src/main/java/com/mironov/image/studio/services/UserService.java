@@ -8,6 +8,7 @@ import com.mironov.image.studio.api.mappers.DescriptionMapper;
 import com.mironov.image.studio.api.mappers.RoleMapper;
 import com.mironov.image.studio.api.mappers.UserCreateMapper;
 import com.mironov.image.studio.api.mappers.UserMapper;
+import com.mironov.image.studio.api.services.ISecurityService;
 import com.mironov.image.studio.api.services.IUserService;
 import com.mironov.image.studio.api.utils.IEmailSender;
 import com.mironov.image.studio.entities.Role;
@@ -20,9 +21,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,13 +43,15 @@ public class UserService implements IUserService {
     private final IUserDao userDao;
     private final IRoleDao roleDao;
     private final IEmailSender emailSender;
+    private final ISecurityService securityService;
 
-    public UserService(PasswordEncoder passwordEncoder, IDescriptionDao descriptionDao, IUserDao userDao, IRoleDao roleDao, IEmailSender emailSender) {
+    public UserService(PasswordEncoder passwordEncoder, IDescriptionDao descriptionDao, IUserDao userDao, IRoleDao roleDao, IEmailSender emailSender, ISecurityService securityService) {
         this.passwordEncoder = passwordEncoder;
         this.descriptionDao = descriptionDao;
         this.userDao = userDao;
         this.roleDao = roleDao;
         this.emailSender = emailSender;
+        this.securityService = securityService;
     }
 
     @Override
@@ -135,11 +135,7 @@ public class UserService implements IUserService {
         entity.setPhone(userUpdateDto.getPhone());
         if (!entity.getUsername().equals(userUpdateDto.getUsername())) {
             entity.setUsername(userUpdateDto.getUsername());
-            @SuppressWarnings("unchecked")
-            Collection<SimpleGrantedAuthority> nowAuthorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder
-                    .getContext().getAuthentication().getAuthorities();
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(entity.getUsername(), entity.getPassword(), nowAuthorities);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            this.securityService.changePrincipal(entity);
         }
         this.userDao.update(entity);
     }
